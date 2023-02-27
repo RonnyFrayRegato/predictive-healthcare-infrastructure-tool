@@ -13,14 +13,15 @@ sudo docker exec -it pg psql -U postgres -d phit -c "CREATE SCHEMA IF NOT EXISTS
 # Create relation structure for database
 echo "Creating relation structure for database..."
 sudo chmod +x synthea_template.sql
-sudo docker cp /home/ubuntu/synthea_template.sql pg:/home
+sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/sql/synthea_template.sql pg:/home
 sudo docker exec -it pg psql -U postgres -d phit -f "/home/synthea_template.sql"
+
+# Generate Synthea Data
+sudo docker exec -it synthea bash -c "java -jar synthea-with-dependencies.jar -p 1000 --exporter.csv.export true"
 
 # Copy CSV contents into database
 echo "Copying CSV contents into database..."
-declare -a array=("patients" "organizations" "providers" "payers" "encounters" "allergies" "careplans" "claims" "payer_transitions" "claims_transactions" "conditions" "devices" "imaging_studies" "immunizations" "medications" "observations" "procedures" "supplies")
-
+declare -a array=("patients" "organizations" "providers" "payers" "encounters" "allergies" "careplans" "claims" "payer_transitions" "claims_transactions" "conditions" "devices" "imaging_studies" "immunizations" "medications" "obse>
 for FILE in "${array[@]}"; do
-  sudo docker exec -it pg psql -U postgres -d phit -c "SET schema 'synthea';"
-  sudo docker exec -it pg psql -U postgres -d phit -c "COPY ${FILE} FROM '/home/output/csv/${FILE}.csv' WITH (format csv, header true, delimiter ',');"
+  sudo docker exec -it pg psql -U postgres -d phit -c "SET schema 'synthea';" -c "COPY ${FILE} FROM '/home/${FILE}.csv' WITH (format csv, header true, delimiter ',');"
 done
