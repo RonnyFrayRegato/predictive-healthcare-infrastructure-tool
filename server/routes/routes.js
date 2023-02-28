@@ -1,81 +1,61 @@
 const express = require('express');
-const { Client } = require('pg');
+const { getSupplies, getPatientsByAge, getCarePlans, getAllergies, getMedicationsByAge } = require('../db/queries');
 
-const app = express();
+const router = express.Router();
 
-const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'phit',
-    password: 'password',
-    port: 5432,
+router.get('/supply', (req, res) => {
+    getSupplies()
+        .then((data) => {
+            res.json({ message: data });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        });
 });
 
-client.connect();
-
-app.get('/supply', (req, res) => {
-    const query = {
-        text: 'SELECT * FROM supplies ',
-        rowMode: 'array',
-    };
-
-    client.query(query).then((results) => {
-        const data = results.rows;
-
-        res.json({ message: data });
-    });
+router.get('/patients/:minAge/:maxAge', (req, res) => {
+    getPatientsByAge(req.params.minAge, req.params.maxAge)
+        .then((data) => {
+            res.json({ message: data });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        });
 });
 
-app.get('/patients/:minAge/:maxAge', (req, res) => {
-    const query = {
-        text: 'SELECT * FROM patient_diagnosis_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
-        rowMode: 'array',
-    };
-
-    client.query(query, [req.params.minAge, req.params.maxAge]).then((results) => {
-        const data = results.rows;
-
-        res.json({ message: data });
-    });
+router.get('/carePlans', (req, res) => {
+    getCarePlans()
+        .then((data) => {
+            res.json({ message: data });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        });
 });
 
-app.get('/carePlans', (req, res) => {
-    const query = {
-        text: 'SELECT id, patient, encounter, code, description FROM careplans',
-        rowMode: 'array',
-    };
-
-    client.query(query).then((results) => {
-        const data = results.rows;
-
-        res.json({ message: data });
-    });
+router.get('/allergies', (req, res) => {
+    getAllergies()
+        .then((data) => {
+            res.json({ message: data });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        });
 });
 
-app.get('/allergies', (req, res) => {
-    const query = {
-        text: 'SELECT patient, code, system, description, type, category FROM allergies',
-        rowMode: 'array',
-    };
-
-    client.query(query).then((results) => {
-        const data = results.rows;
-
-        res.json({ message: data });
-    });
+router.get('/medications/:minAge/:maxAge', (req, res) => {
+    getMedicationsByAge(req.params.minAge, req.params.maxAge)
+        .then((data) => {
+            res.json({ message: data });
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        });
 });
 
-app.get('/medications/:minAge/:maxAge', (req, res) => {
-    const query = {
-        text: 'SELECT * FROM medication_filled_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
-        rowMode: 'array',
-    };
-
-    client.query(query, [req.params.minAge, req.params.maxAge]).then((results) => {
-        const data = results.rows;
-
-        res.json({ message: data });
-    });
-});
-
-module.exports = app;
+module.exports = router;
