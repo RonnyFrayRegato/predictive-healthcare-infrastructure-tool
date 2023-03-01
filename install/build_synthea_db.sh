@@ -29,3 +29,8 @@ declare -a array=("patients" "organizations" "providers" "payers" "encounters" "
 for FILE in "${array[@]}"; do
   sudo docker exec -it pg psql -U postgres -d phit -c "SET schema 'synthea';" -c "COPY ${FILE} FROM '/home/${FILE}.csv' WITH (format csv, header true, delimiter ',');"
 done
+
+# Create database Views
+echo "Creating database views..."
+sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/sql/views_template.sql pg:/home
+sudo docker exec -it pg psql -U postgres -d phit -f "/home/views_template.sql"

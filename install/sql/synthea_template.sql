@@ -91,8 +91,8 @@ CREATE TABLE IF NOT EXISTS  synthea.payers
 CREATE TABLE IF NOT EXISTS  synthea.encounters
 (
     id                  UUID PRIMARY KEY,
-    start_timestamp     TIMESTAMP,
-    stop_timestamp      TIMESTAMP,
+    start_date          TIMESTAMP,
+    stop_date           TIMESTAMP,
     patient_id          UUID,
     organization_id     UUID,
     provider_id         UUID,
@@ -113,8 +113,8 @@ CREATE TABLE IF NOT EXISTS  synthea.encounters
 
 CREATE TABLE IF NOT EXISTS  synthea.allergies
 (
-    start_timestamp TIMESTAMP,
-    stop_timestamp  TIMESTAMP,
+    start_date      TIMESTAMP,
+    stop_date       TIMESTAMP,
     patient_id      UUID,
     encounter_id    UUID,
     code            NUMERIC,
@@ -135,8 +135,8 @@ CREATE TABLE IF NOT EXISTS  synthea.allergies
 CREATE TABLE IF NOT EXISTS  synthea.careplans
 (
     id                 UUID,
-    start_timestamp    TIMESTAMP,
-    stop_timestamp     TIMESTAMP,
+    start_date         TIMESTAMP,
+    stop_date          TIMESTAMP,
     patient_id         UUID,
     encounter_id       UUID,
     code               TEXT,
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS  synthea.claims
 
 CREATE TABLE IF NOT EXISTS  synthea.payer_transitions
 (
-    patient         UUID,
+    patient_id         UUID,
     member_id       UUID,
     start_date      TIMESTAMP,
     end_date        TIMESTAMP,
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS  synthea.payer_transitions
     secondary_payer TEXT,
     plan_ownership  TEXT,
     owner_name      TEXT,
-    FOREIGN KEY (patient) REFERENCES synthea.patients ("id"),
+    FOREIGN KEY (patient_id) REFERENCES synthea.patients ("id"),
     FOREIGN KEY (payer) REFERENCES synthea.payers ("id"),
     FOREIGN KEY (secondary_payer) REFERENCES synthea.payers ("id")
     );
@@ -247,34 +247,34 @@ CREATE TABLE IF NOT EXISTS  synthea.claims_transactions
 
 CREATE TABLE IF NOT EXISTS  synthea.conditions
 (
-    "start"     TIMESTAMP,
-    stop        TIMESTAMP,
-    patient     UUID,
-    encounter   UUID,
-    code        TEXT,
-    description TEXT,
-    FOREIGN KEY (patient) REFERENCES synthea.patients ("id")
+    "start"      TIMESTAMP,
+    stop         TIMESTAMP,
+    patient_id   UUID,
+    encounter_id UUID,
+    code         TEXT,
+    description  TEXT,
+    FOREIGN KEY (patient_id) REFERENCES synthea.patients ("id")
     );
 
 CREATE TABLE IF NOT EXISTS  synthea.devices
 (
-    "start"     TIMESTAMP,
-    stop        TIMESTAMP,
-    patient     UUID,
-    encounter   UUID,
-    code        TEXT,
-    description TEXT,
-    udi         TEXT,
-    FOREIGN KEY (patient) REFERENCES synthea.patients ("id"),
-    FOREIGN KEY (encounter) REFERENCES synthea.encounters ("id")
+    "start"      TIMESTAMP,
+    stop         TIMESTAMP,
+    patient_id   UUID,
+    encounter_id UUID,
+    code         TEXT,
+    description  TEXT,
+    udi          TEXT,
+    FOREIGN KEY (patient_id) REFERENCES synthea.patients ("id"),
+    FOREIGN KEY (encounter_id) REFERENCES synthea.encounters ("id")
     );
 
 CREATE TABLE IF NOT EXISTS  synthea.imaging_studies
 (
     "id"                  UUID,
     "date"                TIMESTAMP,
-    patient               UUID,
-    encounter             UUID,
+    patient_id            UUID,
+    encounter_id          UUID,
     series_uid            TEXT,
     body_site_code        NUMERIC,
     body_site_description TEXT,
@@ -284,20 +284,20 @@ CREATE TABLE IF NOT EXISTS  synthea.imaging_studies
     sop_code              TEXT,
     sop_description       TEXT,
     procedure_code        TEXT,
-    FOREIGN KEY (patient) REFERENCES synthea.patients ("id"),
-    FOREIGN KEY (encounter) REFERENCES synthea.encounters ("id")
+    FOREIGN KEY (patient_id) REFERENCES synthea.patients ("id"),
+    FOREIGN KEY (encounter_id) REFERENCES synthea.encounters ("id")
     );
 
 CREATE TABLE IF NOT EXISTS  synthea.immunizations
 (
-    date        TIMESTAMP,
-    patient     UUID,
-    encounter   UUID,
-    code        TEXT,
-    description TEXT,
-    base_cost   MONEY,
-    FOREIGN KEY (patient) REFERENCES synthea.patients ("id"),
-    FOREIGN KEY (encounter) REFERENCES synthea.encounters ("id")
+    date           TIMESTAMP,
+    patient_id     UUID,
+    encounter_id   UUID,
+    code           TEXT,
+    description    TEXT,
+    base_cost      MONEY,
+    FOREIGN KEY (patient_id) REFERENCES synthea.patients ("id"),
+    FOREIGN KEY (encounter_id) REFERENCES synthea.encounters ("id")
     );
 
 CREATE TABLE IF NOT EXISTS  synthea.medications
