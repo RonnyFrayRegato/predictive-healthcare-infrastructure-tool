@@ -1,0 +1,25 @@
+version: '3.2'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: pg
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - shared-volume:/home
+
+  synthea:
+    image: amlopez5841/synthea:latest
+    container_name: synthea
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - shared-volume:/synthea/output/csv
+
+volumes:
+  shared-volume:
