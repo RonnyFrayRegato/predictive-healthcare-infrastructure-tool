@@ -1,25 +1,38 @@
+import React from "react"
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { useRef } from 'react';
+import HomePage from './pages/home-page/home-page.js';
+import MedicalAdminPageSupply from './pages/medical-admin-page/medical-admin-page-supply.js';
+import MedicalAdminPagePatients from './pages/medical-admin-page/medical-admin-page-patients.js';
+import MedicalAdminPageCarePlans from './pages/medical-admin-page/medical-admin-page-care-plans';
+import MedicalAdminPageAllergies from './pages/medical-admin-page/medical-admin-page-allergies';
+import SystemAdminHomePage from './pages/system-admin-page/system-admin-home-page';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/medicalAdminPage/supply" element={<MedicalAdminPageSupply />} />
+        <Route path="/medicalAdminPage/patients" element={<MedicalAdminPagePatients />} />
+        <Route path="/medicalAdminPage/carePlans" element={<MedicalAdminPageCarePlans />} />
+        <Route path="/medicalAdminPage/allergies" element={<MedicalAdminPageAllergies />} />
+        <Route path="/systemAdminPage/home" element={<SystemAdminHomePage />} />
+
+    </Routes>
+</BrowserRouter>
+
+
   );
+  
 }
 
 export default App;

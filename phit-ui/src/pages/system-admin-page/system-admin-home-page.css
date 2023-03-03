@@ -1,0 +1,133 @@
+
+a:visited {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: #6FA8FF;
+}
+
+
+.system-admin-home {
+    text-align: initial;
+    background-color: #D9D9D9;
+    min-height: 100vh;
+    font-size: 40px;
+    color: white;
+}
+
+.system-admin-home-header {
+    text-align: left;
+    background-color: #6FA8FF;
+    height: 100px;
+}
+
+.system-admin-home-column {
+    text-align: left;
+    color: black;
+    background-color: white;
+    stroke: black;
+    float: left;
+    height: 837px;
+    width: 270px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+.system-admin-home-column-text {
+    padding-top: 20px;
+    font-size: 40px;
+}
+
+.system-admin-home-header-text {
+    padding-top: 20px;
+    margin-left: 20px;
+}
+
+.system-admin-home-body {
+    align-items: center;
+    padding-top: 50px;
+    padding-left:100px;
+    color:black;
+    text-align:center;
+}
+
+.page-title {
+    padding-right: 60px;
+    font-size:60px;
+}
+
+
+.system-admin-home-highlighted-text {
+    color: #6FA8FF;
+}
+
+.system-admin-home-table-top-spacer {
+    margin-left: 587px;
+    margin-right: auto;
+    width: 1000px;
+    border-bottom: 2px solid black;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #D9D9D9;
+    color: black;
+}
+
+.system-admin-home-table-bottom-spacer {
+    margin-left: 587px;
+    margin-right: auto;
+    width: 1000px;
+    border-top: 2px solid black;
+    text-align: center;
+    height: 10px;
+    background-color: #D9D9D9;
+    color: black;
+}
+
+.system-admin-home-table-wrapper {
+    overflow-y: auto;
+    height: 600px;
+}
+
+
+th {
+    font-size: 25px;
+    border-bottom: 1px solid black;
+}
+
+tr:nth-child(even) {
+    background-color: #D9D9D9;
+}
+
+td {
+    font-size: 20px;
+    text-align: center;
+}
+
+
+
+.system-admin-home-exit-text {
+    padding-top: 616px;
+    font-size: 40px;
+}
+
+.login-input {
+    padding-top: 20px;
+    text-align:center;
+    font-size: 20px;
+    display: block;
+}
+
+.system-admin-home-profile-wrapper{
+    padding-top: 140px;
+    
+}
+
+.profile-text{
+    color:black;
+    display:inline-block;
+}

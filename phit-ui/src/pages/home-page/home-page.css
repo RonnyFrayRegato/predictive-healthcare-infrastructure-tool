@@ -1,0 +1,54 @@
+
+a:visited {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.home-page {
+    text-align: initial;
+    background-color: white;
+    min-height: 100vh;
+    font-size: 40px;
+    color: white;
+}
+
+.home-page-header {
+    text-align: center;
+    background-color: #6FA8FF;
+    height: 100px;
+
+}
+
+.home-page-header-text {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.home-page-body {
+
+    height: auto;
+    color: black;
+}
+
+.home-page-logo-wrapper {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.circle-text {
+    font-size: 40px;
+    text-align: center;
+    padding-top: 100px;
+
+}
+
+.home-page-login-input {
+    padding-top: 20px;
+    text-align:center;
+    font-size: 20px;
+    display: block;
+}
+
