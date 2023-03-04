@@ -27,7 +27,7 @@ const MedicalAdminPageAllergies = () => {
                     <hr></hr>
                     <Link to ="/medicalAdminPage/patients">&emsp;Patients</Link>
                     <hr></hr>
-                    <Link to="/medicalAdminPage/carePlans">&emsp;Care Plans</Link>
+                    <Link to ="/medicalAdminPage/patients">&emsp;Patients</Link>
                     <hr></hr>
                     <div className="medical-admin-allergies-highlighted-text">&emsp;Allergies</div>
 

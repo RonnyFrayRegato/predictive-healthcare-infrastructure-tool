@@ -28,7 +28,7 @@ const MedicalAdminPagePatients = () => {
                     <hr></hr>
                     <div className="medical-admin-patients-highlighted-text">&emsp;Patients</div>
                     <hr></hr>
-                    <Link to="/medicalAdminPage/carePlans">&emsp;Care Plans</Link>
+                    <Link to ="/medicalAdminPage/patients">&emsp;Patients</Link>
                     <hr></hr>
                     <Link to="/medicalAdminPage/allergies">&emsp;Allergies</Link>
 

@@ -31,7 +31,7 @@ const MedicalAdminPageSupply = () => {
                     <hr></hr>
                     <Link to ="/medicalAdminPage/patients">&emsp;Patients</Link>
                     <hr></hr>
-                    <Link to="/medicalAdminPage/carePlans">&emsp;Care Plans</Link>
+                    <Link to ="/medicalAdminPage/patients">&emsp;Patients</Link>
                     <hr></hr>
                     <Link to="/medicalAdminPage/allergies">&emsp;Allergies</Link>
 

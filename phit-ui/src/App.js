@@ -6,7 +6,6 @@ import { useRef } from 'react';
 import HomePage from './pages/home-page/home-page.js';
 import MedicalAdminPageSupply from './pages/medical-admin-page/medical-admin-page-supply.js';
 import MedicalAdminPagePatients from './pages/medical-admin-page/medical-admin-page-patients.js';
-import MedicalAdminPageCarePlans from './pages/medical-admin-page/medical-admin-page-care-plans';
 import MedicalAdminPageAllergies from './pages/medical-admin-page/medical-admin-page-allergies';
 import SystemAdminHomePage from './pages/system-admin-page/system-admin-home-page';
 
@@ -23,7 +22,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/medicalAdminPage/supply" element={<MedicalAdminPageSupply />} />
         <Route path="/medicalAdminPage/patients" element={<MedicalAdminPagePatients />} />
-        <Route path="/medicalAdminPage/carePlans" element={<MedicalAdminPageCarePlans />} />
         <Route path="/medicalAdminPage/allergies" element={<MedicalAdminPageAllergies />} />
         <Route path="/systemAdminPage/home" element={<SystemAdminHomePage />} />
 
