@@ -9,3 +9,9 @@ SELECT patients.id, date_part('year', age(birth_date)) AS years_old, conditions.
 FROM synthea.patients
 INNER JOIN synthea.conditions ON conditions.patient_id = patients.id
 ORDER BY years_old ASC;
+
+CREATE VIEW synthea.peanut_allergenic AS
+SELECT description, COUNT(description) AS allergenic_patients
+FROM synthea.allergies
+WHERE description = 'Peanut (substance)'
+GROUP BY description;
