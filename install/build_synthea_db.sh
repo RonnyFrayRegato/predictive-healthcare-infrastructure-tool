@@ -19,7 +19,8 @@ sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/sq
 sudo docker exec -it pg psql -U postgres -d phit -f "/home/synthea_tables.sql"
 
 # Generate Synthea data
-sudo docker exec -it synthea bash -c "java -jar synthea-with-dependencies.jar -p 1000 --exporter.csv.export true"
+read -p "Enter desired population value: " population
+sudo docker exec -it synthea bash -c "java -jar synthea-with-dependencies.jar -p ${population} --exporter.csv.export true"
 
 # Copy CSV contents into database
 echo "Copying CSV contents into database..."

@@ -62,10 +62,68 @@ const getMedicationsByAge = (minAge, maxAge) => {
         });
 };
 
+const getPopulationChange2020_2021 = () => {
+
+    const query = {
+        text: "SELECT percent_change FROM acs.population_change WHERE year_range = '2020-2021'",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getTotalPeanutAllergyPatients = () => {
+
+    const query = {
+        text: "SELECT allergenic_patients FROM synthea.peanut_allergenic",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getPeanutAllergyResults = () => {
+
+    const query = {
+        text: "SELECT * FROM acs.peanut_allergy_results",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows;
+        });
+};
+
+const insertPeanutAllergyResults = (year, totalPatients) => {
+
+    const insertQuery = {
+        text: 'INSERT INTO acs.peanut_allergy_results(year, total_patients) VALUES($1, $2)',
+        values: [year, totalPatients],
+    };
+
+    client.query(insertQuery, (err, res) => {
+        if (err) {
+            console.log(err.stack);
+        }
+    });
+};
+
+
 module.exports = {
     getSupplies,
     getPatientsByAge,
     getCarePlans,
     getAllergies,
     getMedicationsByAge,
+    getPopulationChange2020_2021,
+    getTotalPeanutAllergyPatients,
+    insertPeanutAllergyResults,
+    getPeanutAllergyResults
 };

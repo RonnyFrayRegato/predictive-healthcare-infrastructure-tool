@@ -33,7 +33,7 @@ acs_2021_data = acs_2021_response.json()
 # Print Florida population data
 print(f"Population in {acs_2015_data[1][0]} (2015): {int(acs_2015_data[1][1]):,}")
 print(f"Population in {acs_2020_data[1][0]} (2020): {int(acs_2020_data[1][1]):,}")
-print(f"Population in {acs_2021_data[1][0]} (2020): {int(acs_2021_data[1][1]):,}")
+print(f"Population in {acs_2021_data[1][0]} (2021): {int(acs_2021_data[1][1]):,}")
 
 # Calculate percentage increase
 percent_increase_2020_2021 = (1 - (float(acs_2020_data[1][1])) / (float(acs_2021_data[1][1])))
