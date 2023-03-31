@@ -1,6 +1,6 @@
 const express = require('express');
 const { getSupplies, getPatientsByAge, getCarePlans, getAllergies, getMedicationsByAge} = require('../db/queries');
-const {calculatePeanutAllergy} = require("../insights_engine/prediction_algorithms");
+const {calculatePeanutAllergy, calculateDiabetic, calculateInsulin} = require("../insights_engine/prediction_algorithms");
 
 const router = express.Router();
 
@@ -59,9 +59,35 @@ router.get('/medications/:minAge/:maxAge', (req, res) => {
         });
 });
 
-router.get('/prediction', (req, res) => {
+router.get('/peanutPrediction', (req, res) => {
 
     calculatePeanutAllergy().then((data) => {
+
+        res.json({ message: data });
+
+    }).catch((error) => {
+        console.error(error);
+        res.send(error)
+    });
+
+});
+
+router.get('/diabeticPrediction', (req, res) => {
+
+    calculateDiabetic().then((data) => {
+
+        res.json({ message: data });
+
+    }).catch((error) => {
+        console.error(error);
+        res.send(error)
+    });
+
+});
+
+router.get('/insulinPrediction', (req, res) => {
+
+    calculateInsulin().then((data) => {
 
         res.json({ message: data });
 
