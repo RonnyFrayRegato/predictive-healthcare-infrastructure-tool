@@ -8,4 +8,4 @@ docker run -it -d --name=synthea synthea
 read -p "Enter Desired population value: " population
 
 # Generate population of synthetic patients
-docker exec -it synthea bash -c "java -jar synthea-with-dependencies.jar -p ${population} --exporter.csv.export true"
+docker exec -it synthea bash -c "cd synthea/ && ./run_synthea -p ${population} --exporter.csv.export true"

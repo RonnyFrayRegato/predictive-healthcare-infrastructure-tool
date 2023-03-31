@@ -9,7 +9,7 @@ sudo docker start synthea
 sudo docker exec -it pg psql -U postgres -c "DROP DATABASE phit WITH (FORCE);"
 
 # Create PHIT database and Synthea schema
-echo "Creating Synthea database..."
+echo "Creating PHIT database..."
 sudo docker exec -it pg psql -U postgres -c "CREATE DATABASE phit;"
 sudo docker exec -it pg psql -U postgres -d phit -c "CREATE SCHEMA IF NOT EXISTS synthea;"
 
@@ -20,7 +20,7 @@ sudo docker exec -it pg psql -U postgres -d phit -f "/home/synthea_tables.sql"
 
 # Generate Synthea data
 read -p "Enter desired population value: " population
-sudo docker exec -it synthea bash -c "java -jar synthea-with-dependencies.jar -p ${population} --exporter.csv.export true"
+sudo docker exec -it synthea bash -c "cd synthea/ && ./run_synthea -p ${population} --exporter.csv.export true"
 
 # Copy CSV contents into database
 echo "Copying CSV contents into database..."
@@ -36,13 +36,14 @@ echo "Creating database views..."
 sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/sql/synthea_views.sql pg:/home
 sudo docker exec -it pg psql -U postgres -d phit -f "/home/synthea_views.sql"
 
-# Running python script for ACS API
-echo "Generating ACS API output..."
+# Run Insights Engine algorithm using ACS API
+echo "Generating Insights Engine output..."
 cd insights-engine/
 python3 acs_engine.py
 cd ..
 
-# Copy ACS data to database
+# Copy Insights Engine output to database
+echo "Copying Insights Engine output to database..."
 sudo docker exec -it pg psql -U postgres -d phit -c "CREATE SCHEMA IF NOT EXISTS acs;"
 sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/insights-engine/population_data.csv pg:/home
 sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/sql/api_views.sql pg:/home
