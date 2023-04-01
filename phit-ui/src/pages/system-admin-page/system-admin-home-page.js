@@ -44,7 +44,7 @@ const SystemAdminHomePage = () => {
                             <div className="detail-text">
                                 <img src="https://freesvg.org/img/abstract-user-flat-4.png"></img>
                                 <br />
-                                <span>&emsp;&emsp;&emsp;&emsp;&nbsp;Clinician</span>
+                                <span>&emsp;&emsp;&emsp;Clinician</span>
                             </div>
                             <div className="detail-text">
                                 <img src="https://freesvg.org/img/abstract-user-flat-4.png"></img>

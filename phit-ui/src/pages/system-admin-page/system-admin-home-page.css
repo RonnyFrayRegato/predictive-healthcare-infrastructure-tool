@@ -56,7 +56,7 @@ a:hover {
 }
 
 .page-title {
-    padding-left: 87vh;
+    text-align: center;
     font-size: 6vh;
 }
 
@@ -124,8 +124,8 @@ td {
 
 .system-admin-home-profile-wrapper{
     padding-top: 14vh;
-    padding-left: 40vh;
-    
+    text-align: center;
+    padding-left: 18vw;
 }
 
 .profile-text{
@@ -135,6 +135,7 @@ td {
 
 .row {
     padding: 0 1vh;
+    text-align: center;
 }
 
 .column {
@@ -151,5 +152,5 @@ td {
 }
 
 .detail-text{
-    font-size: 4vh;
+    font-size: 3vh;
 }

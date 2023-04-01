@@ -73,8 +73,7 @@ const MedicalAdminPagePatients = () => {
                                             <th>Patient Name</th>
                                             <th>Birth Date</th>
                                             <th>Age</th>
-                                            <th>Description</th>
-                                            <th>Quantity</th>
+                                      
                                         </tr>
                                         {data.map((arr, index) => (
                                             <tr key={index}>
