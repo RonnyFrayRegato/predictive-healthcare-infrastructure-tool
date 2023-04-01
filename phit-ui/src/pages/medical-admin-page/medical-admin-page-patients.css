@@ -15,14 +15,16 @@ a:hover {
     text-align: initial;
     background-color: #D9D9D9;
     min-height: 100vh;
-    font-size: 40px;
+    font-size: 4vh;
     color: white;
+    height: 100vh;
+    width: 100vw;
 }
 
 .medical-admin-patients-header {
     text-align: left;
     background-color: #6FA8FF;
-    height: 100px;
+    height: 10vh;
 }
 
 .medical-admin-patients-column {
@@ -31,24 +33,23 @@ a:hover {
     background-color: white;
     stroke: black;
     float: left;
-    height: 837px;
-    width: 270px;
+    height: 90vh;
+    width: 30vh;
     box-shadow: 5px 5px 10px gray;
 }
 
 .medical-admin-patients-column-text {
-    padding-top: 20px;
-    font-size: 40px;
+    padding-top: 2vh;
+    font-size: 4vh;
 }
 
 .medical-admin-patients-header-text {
-    padding-top: 20px;
-    margin-left: 20px;
+    padding-top: 2vh;
+    margin-left: 2vh;
 }
 
 .medical-admin-patients-body {
-    text-align: center;
-    align-items: center;
+
 }
 
 .medical-admin-patients-highlighted-text {
@@ -56,31 +57,31 @@ a:hover {
 }
 
 .medical-admin-patients-table-top-spacer {
-    margin-left: 587px;
+    margin-left: 70vh;
     margin-right: auto;
-    width: 1000px;
+    width: 100vh;
     border-bottom: 2px solid black;
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
     background-color: #D9D9D9;
     color: black;
 }
 
 .medical-admin-patients-table-bottom-spacer {
-    margin-left: 587px;
+    margin-left: 70vh;
     margin-right: auto;
-    width: 1000px;
+    width: 100vh;
     border-top: 2px solid black;
     text-align: center;
-    height: 10px;
+    height: 1vh;
     background-color: #D9D9D9;
     color: black;
 }
 
 .medical-admin-patients-table-wrapper {
     overflow-y: auto;
-    height: 600px;
+    height: 60vh;
 }
 
 table {
@@ -90,12 +91,12 @@ table {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
+    width: 100vh;
     color: black;
 }
 
 th {
-    font-size: 25px;
+    font-size: 2.5vh;
     border-bottom: 1px solid black;
     position: sticky;
     top: 0;
@@ -107,29 +108,35 @@ tr:nth-child(even) {
 }
 
 td {
-    font-size: 20px;
+    font-size: 2vh;
     text-align: center;
 }
 
 .circle {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
-    width: 300px;
-    height: 300px;
+    margin-top: 10vh;
+    width: 30vh;
+    height: 30vh;
     border: 3px solid black;
     background-color: darkgray;
     border-radius: 50%;
 }
 
 .medical-admin-patients-exit-text {
-    padding-top: 320px;
-    font-size: 40px;
+    padding-top: 22.2vh;
+    font-size: 4vh;
 }
+
 
 .login-input {
     padding-top: 20px;
     text-align:center;
     font-size: 20px;
     display: block;
+}
+
+.table-loading{
+    color:black;
+    padding-left: 83vh;
 }

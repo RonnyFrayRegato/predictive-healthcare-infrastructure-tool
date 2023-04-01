@@ -16,14 +16,16 @@ a:hover {
     text-align: initial;
     background-color: #D9D9D9;
     min-height: 100vh;
-    font-size: 40px;
+    font-size: 4vh;
     color: white;
+    height: 100vh;
+    width: 100vw;
 }
 
 .system-admin-home-header {
     text-align: left;
     background-color: #6FA8FF;
-    height: 100px;
+    height: 10vh;
 }
 
 .system-admin-home-column {
@@ -32,32 +34,30 @@ a:hover {
     background-color: white;
     stroke: black;
     float: left;
-    height: 837px;
-    width: 270px;
+    height: 90vh;
+    width: 30vh;
     box-shadow: 5px 5px 10px gray;
 }
 
 .system-admin-home-column-text {
-    padding-top: 20px;
-    font-size: 40px;
+    padding-top: 2vh;
+    font-size: 4vh;
 }
 
 .system-admin-home-header-text {
-    padding-top: 20px;
-    margin-left: 20px;
+    padding-top: 2vh;
+    margin-left: 2vh;
 }
 
 .system-admin-home-body {
-    align-items: center;
-    padding-top: 50px;
-    padding-left:100px;
+    padding-top: 5vh;
+    padding-left:10vh;
     color:black;
-    text-align:center;
 }
 
 .page-title {
-    padding-right: 60px;
-    font-size:60px;
+    padding-left: 87vh;
+    font-size: 6vh;
 }
 
 
@@ -66,36 +66,36 @@ a:hover {
 }
 
 .system-admin-home-table-top-spacer {
-    margin-left: 587px;
+    margin-left: 58vh;
     margin-right: auto;
     width: 1000px;
     border-bottom: 2px solid black;
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
     background-color: #D9D9D9;
     color: black;
 }
 
 .system-admin-home-table-bottom-spacer {
-    margin-left: 587px;
+    margin-left: 58vh;
     margin-right: auto;
-    width: 1000px;
+    width: 100vh;
     border-top: 2px solid black;
     text-align: center;
-    height: 10px;
+    height: 1vh;
     background-color: #D9D9D9;
     color: black;
 }
 
 .system-admin-home-table-wrapper {
     overflow-y: auto;
-    height: 600px;
+    height: 60vh;
 }
 
 
 th {
-    font-size: 25px;
+    font-size: 2.5vh;
     border-bottom: 1px solid black;
 }
 
@@ -104,15 +104,15 @@ tr:nth-child(even) {
 }
 
 td {
-    font-size: 20px;
+    font-size: 2vh;
     text-align: center;
 }
 
 
 
 .system-admin-home-exit-text {
-    padding-top: 616px;
-    font-size: 40px;
+    padding-top: 61vh;
+    font-size: 4vh;
 }
 
 .login-input {
@@ -123,11 +123,33 @@ td {
 }
 
 .system-admin-home-profile-wrapper{
-    padding-top: 140px;
+    padding-top: 14vh;
+    padding-left: 40vh;
     
 }
 
 .profile-text{
     color:black;
     display:inline-block;
+}
+
+.row {
+    padding: 0 1vh;
+}
+
+.column {
+    padding: 0 1vh;
+    display:flex;
+}
+
+.column img {
+    margin-top: 5vh;
+    vertical-align: middle;
+    margin-left: 5vw;
+
+
+}
+
+.detail-text{
+    font-size: 4vh;
 }

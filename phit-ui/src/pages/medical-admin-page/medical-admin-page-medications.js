@@ -31,6 +31,9 @@ const MedicalAdminPageMedications = () => {
                     <div className="medical-admin-medications-highlighted-text">&emsp;Medications</div>
                     <hr></hr>
                     <Link to="/medicalAdminPage/allergies">&emsp;Allergies</Link>
+                    <hr></hr>
+                    <br/>
+
 
                 </div>
                 <div className="medical-admin-medications-exit-text">
@@ -58,7 +61,7 @@ const MedicalAdminPageMedications = () => {
                             return (
                                 <div>
 
-                                    Loading...
+                                    <span className="table-loading">Loading...</span>
 
                                 </div>
                             )

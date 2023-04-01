@@ -31,7 +31,7 @@ const HomePage = () => {
             <div className="home-page-body">
                 <div className="home-page-logo-wrapper">
 
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Seal_of_the_U.S._Department_of_Veterans_Affairs.svg/900px-Seal_of_the_U.S._Department_of_Veterans_Affairs.svg.png" height="300"></img>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Seal_of_the_U.S._Department_of_Veterans_Affairs.svg/900px-Seal_of_the_U.S._Department_of_Veterans_Affairs.svg.png"></img>
 
                 </div>
                 <div className="home-page-login-input">

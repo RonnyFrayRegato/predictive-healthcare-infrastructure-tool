@@ -33,23 +33,31 @@ const SystemAdminHomePage = () => {
                 Access Control
                     </div>
                 <div className="system-admin-home-profile-wrapper">
-                    
-                    <img src="https://freesvg.org/img/abstract-user-flat-4.png" height="300"></img>&emsp;&emsp;
-                    <img src="https://freesvg.org/img/abstract-user-flat-4.png" height="300"></img>&emsp;&emsp;
-                    <img src="https://freesvg.org/img/abstract-user-flat-4.png" height="300"></img>&emsp;&emsp;
+
+                    <div className="row">
+                        <div className="column">
+                            <div className="detail-text">
+                                <img src="https://freesvg.org/img/abstract-user-flat-4.png"></img>
+                                <br />
+                                <Link to="/medicalAdminPage/supply">&emsp;&emsp;&emsp;Medical Admin</Link>
+                            </div>
+                            <div className="detail-text">
+                                <img src="https://freesvg.org/img/abstract-user-flat-4.png"></img>
+                                <br />
+                                <span>&emsp;&emsp;&emsp;&emsp;&nbsp;Clinician</span>
+                            </div>
+                            <div className="detail-text">
+                                <img src="https://freesvg.org/img/abstract-user-flat-4.png"></img>
+                                <br />
+                                <span>&emsp;&emsp;&emsp;Capital Planner</span>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
             </div>
-            <div className= "profile-text">
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
-                <Link to="/medicalAdminPage/supply">Medical Admin</Link>
-                &ensp;&emsp;&emsp;&emsp;&emsp;
-                Clinician
-                &emsp;&emsp;&emsp;&emsp;
-                Capital Planner
-               
-            </div>
+
 
         </div>
     );
