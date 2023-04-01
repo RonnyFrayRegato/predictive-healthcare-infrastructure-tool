@@ -15,7 +15,7 @@ sudo docker exec -it pg psql -U postgres -d phit -c "CREATE SCHEMA IF NOT EXISTS
 
 # Create relation structure for database
 echo "Creating relation structure for database..."
-sudo docker cp /home/zach/Desktop/predictive-healthcare-infrastructure-tool/install/sql/synthea_tables.sql pg:/home
+sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/sql/synthea_tables.sql pg:/home
 sudo docker exec -it pg psql -U postgres -d phit -f "/home/synthea_tables.sql"
 
 # Generate Synthea data
@@ -33,7 +33,7 @@ done
 
 # Create database views
 echo "Creating database views..."
-sudo docker cp /home/zach/Desktop/predictive-healthcare-infrastructure-tool/install/sql/synthea_views.sql pg:/home
+sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/sql/synthea_views.sql pg:/home
 sudo docker exec -it pg psql -U postgres -d phit -f "/home/synthea_views.sql"
 
 # Run Insights Engine algorithm using ACS API
@@ -45,7 +45,7 @@ cd ..
 # Copy Insights Engine output to database
 echo "Copying Insights Engine output to database..."
 sudo docker exec -it pg psql -U postgres -d phit -c "CREATE SCHEMA IF NOT EXISTS acs;"
-sudo docker cp /home/zach/Desktop/predictive-healthcare-infrastructure-tool/install/insights-engine/population_data.csv pg:/home
-sudo docker cp /home/zach/Desktop/predictive-healthcare-infrastructure-tool/install/sql/api_views.sql pg:/home
+sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/insights-engine/population_data.csv pg:/home
+sudo docker cp /home/ubuntu/predictive-healthcare-infrastructure-tool/install/sql/api_views.sql pg:/home
 sudo docker exec -it pg psql -U postgres -d phit -f "/home/api_views.sql"
 sudo docker exec -it pg psql -U postgres -d phit -c "SET schema 'acs';" -c "COPY population_change FROM '/home/population_data.csv' WITH (format csv, header true, delimiter ',');"
