@@ -1,4 +1,4 @@
-import './medical-admin-page-supply.css'
+import './static-data-page.css'
 import {useState} from 'react';
 import {useRef} from 'react';
 import {Link} from 'react-router-dom';
@@ -11,15 +11,15 @@ const MedicalAdminPageSupply = () => {
             .then((res) => res.json())
             .then((data) => setData(data.message));
     }, []);
-    return (<div className="medical-admin-supply">
-        <div className="medical-admin-supply-header">
-            <div className="medical-admin-supply-header-text">
+    return (<div className="medical-admin">
+        <div className="medical-admin-header">
+            <div className="medical-admin-header-text">
                 PHIT
             </div>
         </div>
-        <div className="medical-admin-supply-column">
-            <div className="medical-admin-supply-column-text">
-                <div className="medical-admin-supply-highlighted-text">&emsp;Supply</div>
+        <div className="medical-admin-column">
+            <div className="medical-admin-column-text">
+                <div className="medical-admin-highlighted-text">&emsp;Supply</div>
                 <hr></hr>
                 <Link to="/medicalAdminPage/patients">&emsp;Patients</Link>
                 <hr></hr>
@@ -29,7 +29,7 @@ const MedicalAdminPageSupply = () => {
                 <hr></hr>
                 <br/>
             </div>
-            <div className="medical-admin-supply-exit-text">
+            <div className="medical-admin-exit-text">
                 <Link to="/systemAdminPage/home">
                     &ensp;Back
                 </Link>
@@ -40,10 +40,10 @@ const MedicalAdminPageSupply = () => {
             </div>
         </div>
         <div>
-            <div className="medical-admin-supply-table-top-spacer">
+            <div className="medical-admin-table-top-spacer">
                 Supply
             </div>
-            <div className="medical-admin-supply-table-wrapper">
+            <div className="medical-admin-table-wrapper">
                 {(() => {
                     if (!data) {
                         return (<div>
@@ -66,7 +66,7 @@ const MedicalAdminPageSupply = () => {
                     }
                 })()}
             </div>
-            <div className="medical-admin-supply-table-bottom-spacer">
+            <div className="medical-admin-table-bottom-spacer">
             </div>
         </div>
     </div>);

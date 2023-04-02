@@ -1,4 +1,4 @@
-import './medical-admin-page-medications.css'
+import './static-data-page.css'
 import {useState} from 'react';
 import {useRef} from 'react';
 import {Link} from 'react-router-dom';
@@ -11,25 +11,25 @@ const MedicalAdminPageMedications = () => {
             .then((res) => res.json())
             .then((data) => setData(data.message));
     }, []);
-    return (<div className="medical-admin-medications">
-        <div className="medical-admin-medications-header">
-            <div className="medical-admin-medications-header-text">
+    return (<div className="medical-admin">
+        <div className="medical-admin-header">
+            <div className="medical-admin-header-text">
                 PHIT
             </div>
         </div>
-        <div className="medical-admin-medications-column">
-            <div className="medical-admin-medications-column-text">
+        <div className="medical-admin-column">
+            <div className="medical-admin-column-text">
                 <Link to="/medicalAdminPage/supply">&emsp;Supply</Link>
                 <hr></hr>
                 <Link to="/medicalAdminPage/patients">&emsp;Patients</Link>
                 <hr></hr>
-                <div className="medical-admin-medications-highlighted-text">&emsp;Medications</div>
+                <div className="medical-admin-highlighted-text">&emsp;Medications</div>
                 <hr></hr>
                 <Link to="/medicalAdminPage/allergies">&emsp;Allergies</Link>
                 <hr></hr>
                 <br/>
             </div>
-            <div className="medical-admin-medications-exit-text">
+            <div className="medical-admin-exit-text">
                 <Link to="/systemAdminPage/home">
                     &ensp;Back
                 </Link>
@@ -40,10 +40,10 @@ const MedicalAdminPageMedications = () => {
             </div>
         </div>
         <div>
-            <div className="medical-admin-medications-table-top-spacer">
+            <div className="medical-admin-table-top-spacer">
                 Medications
             </div>
-            <div className="medical-admin-medications-table-wrapper">
+            <div className="medical-admin-table-wrapper">
                 {(() => {
                     if (!data) {
                         return (<div>
@@ -66,7 +66,7 @@ const MedicalAdminPageMedications = () => {
                     }
                 })()}
             </div>
-            <div className="medical-admin-medications-table-bottom-spacer">
+            <div className="medical-admin--table-bottom-spacer">
             </div>
         </div>
     </div>);

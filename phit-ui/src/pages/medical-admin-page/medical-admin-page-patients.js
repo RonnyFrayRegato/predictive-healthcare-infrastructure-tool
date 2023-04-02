@@ -1,4 +1,4 @@
-import './medical-admin-page-patients.css'
+import './static-data-page.css'
 import {useState} from 'react';
 import {useRef} from 'react';
 import {Link} from 'react-router-dom';
@@ -11,17 +11,17 @@ const MedicalAdminPagePatients = () => {
             .then((res) => res.json())
             .then((data) => setData(data.message));
     }, []);
-    return (<div className="medical-admin-patients">
-        <div className="medical-admin-patients-header">
-            <div className="medical-admin-patients-header-text">
+    return (<div className="medical-admin">
+        <div className="medical-admin-header">
+            <div className="medical-admin-header-text">
                 PHIT
             </div>
         </div>
-        <div className="medical-admin-patients-column">
-            <div className="medical-admin-patients-column-text">
+        <div className="medical-admin-column">
+            <div className="medical-admin-column-text">
                 <Link to="/medicalAdminPage/supply">&emsp;Supply</Link>
                 <hr></hr>
-                <div className="medical-admin-patients-highlighted-text">&emsp;Patients</div>
+                <div className="medical-admin-highlighted-text">&emsp;Patients</div>
                 <hr></hr>
                 <Link to="/medicalAdminPage/medications">&emsp;Medications</Link>
                 <hr></hr>
@@ -29,7 +29,7 @@ const MedicalAdminPagePatients = () => {
                 <hr></hr>
                 <br/>
             </div>
-            <div className="medical-admin-patients-exit-text">
+            <div className="medical-admin-exit-text">
                 <Link to="/systemAdminPage/home">
                     &ensp;Back
                 </Link>
@@ -40,10 +40,10 @@ const MedicalAdminPagePatients = () => {
             </div>
         </div>
         <div>
-            <div className="medical-admin-patients-table-top-spacer">
+            <div className="medical-admin-table-top-spacer">
                 Patients
             </div>
-            <div className="medical-admin-patients-table-wrapper">
+            <div className="medical-admin-table-wrapper">
                 {(() => {
                     if (!data) {
                         return (<div>
@@ -64,7 +64,7 @@ const MedicalAdminPagePatients = () => {
                     }
                 })()}
             </div>
-            <div className="medical-admin-patients-table-bottom-spacer">
+            <div className="medical-admin-table-bottom-spacer">
             </div>
         </div>
     </div>);

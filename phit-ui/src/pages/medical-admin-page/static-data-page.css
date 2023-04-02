@@ -11,7 +11,7 @@ a:hover {
     color: #6FA8FF;
 }
 
-.medical-admin-supply {
+.medical-admin {
     text-align: initial;
     background-color: #D9D9D9;
     min-height: 100vh;
@@ -21,13 +21,13 @@ a:hover {
     width: 100vw;
 }
 
-.medical-admin-supply-header {
+.medical-admin-header {
     text-align: left;
     background-color: #6FA8FF;
     height: 10vh;
 }
 
-.medical-admin-supply-column {
+.medical-admin-column {
     text-align: left;
     color: black;
     background-color: white;
@@ -38,21 +38,21 @@ a:hover {
     box-shadow: 5px 5px 10px gray;
 }
 
-.medical-admin-supply-column-text {
+.medical-admin-column-text {
     padding-top: 2vh;
     font-size: 4vh;
 }
 
-.medical-admin-supply-header-text {
+.medical-admin-header-text {
     padding-top: 2vh;
     margin-left: 2vh;
 }
 
-.medical-admin-supply-highlighted-text {
+.medical-admin-highlighted-text {
     color: #6FA8FF;
 }
 
-.medical-admin-supply-table-top-spacer {
+.medical-admin-table-top-spacer {
     margin-left: auto;
     margin-right: auto;
     padding-left: 30vh;
@@ -64,7 +64,7 @@ a:hover {
     color: black;
 }
 
-.medical-admin-supply-table-bottom-spacer {
+.medical-admin-table-bottom-spacer {
     margin-left: auto;
     margin-right: auto;
     padding-left: 30vh;
@@ -76,7 +76,7 @@ a:hover {
     color: black;
 }
 
-.medical-admin-supply-table-wrapper {
+.medical-admin-table-wrapper {
     overflow-y: auto;
     height: 60vh;
 }
@@ -122,7 +122,7 @@ td {
     border-radius: 50%;
 }
 
-.medical-admin-supply-exit-text {
+.medical-admin-exit-text {
     padding-top: 22.2vh;
     font-size: 4vh;
 }
