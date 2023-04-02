@@ -46,21 +46,20 @@ a:link {
     padding-top: 100px;
 
 }
-img{
+
+img {
     height: 30vh;
 }
 
-
 .home-page-login-input {
     padding-top: 2vh;
-    text-align:center;
+    text-align: center;
     font-size: 2vh;
     display: block;
 }
 
-input{
+input {
     height: 2vh;
     width: 18vh;
     font-size: 2vh;
-
 }

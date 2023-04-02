@@ -1,86 +1,75 @@
 import './home-page.css'
-import { useState } from 'react';
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import {useState} from 'react';
+import {useRef} from 'react';
+import {Link} from 'react-router-dom';
 
 const HomePage = () => {
-
     const userInputRef = useRef(null);
     const passInputRef = useRef(null);
-
-    const [Username, setUser] = useState('');
-    const [Password, setPass] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleUserNameChange = event => {
-        setUser(event.target.value);
+        setUsername(event.target.value);
     };
 
     const handlePasswordChange = event => {
-        setPass(event.target.value);
+        setPassword(event.target.value);
     };
 
-    return (
-        <div className="home-page">
-            <div className="home-page-header">
-                <div className="home-page-header-text">
-
-                    Predictive Healthcare Infrastructure Tool
-
-                </div>
+    return (<div className="home-page">
+        <div className="home-page-header">
+            <div className="home-page-header-text">
+                Predictive Healthcare Infrastructure Tool
             </div>
-            <div className="home-page-body">
-                <div className="home-page-logo-wrapper">
-
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Seal_of_the_U.S._Department_of_Veterans_Affairs.svg/900px-Seal_of_the_U.S._Department_of_Veterans_Affairs.svg.png"></img>
-
+        </div>
+        <div className="home-page-body">
+            <div className="home-page-logo-wrapper">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Seal_of_the_U.S._Department_of_Veterans_Affairs.svg/900px-Seal_of_the_U.S._Department_of_Veterans_Affairs.svg.png"
+                    alt="Department of Veterans Affairs Seal"
+                />
+            </div>
+            <div className="home-page-login-input">
+                <div>
+                    <label htmlFor="username-input">Username:&emsp;</label>
+                    <input
+                        ref={userInputRef}
+                        type="text"
+                        id="Username"
+                        name="Username"
+                        onChange={handleUserNameChange}
+                        value={username}
+                    />
                 </div>
-                <div className="home-page-login-input">
-                    <div>
-
-                        Username:&emsp;
-                        <input ref={userInputRef} type="text" id="Username" name="Username" onChange={handleUserNameChange} value={Username}/>
-
-                    </div>
-                    <div>
-
-                        Password:&nbsp;&emsp;
-                        <input ref={passInputRef} type="text" id="Password" name="Password" onChange={handlePasswordChange} value={Password} />
-
-                    </div>
-                    <div>
-
-                        {(() => {
-                            if (Username == "system" && Password == "admin") {
-                                return (
-                                    <div>
-
-                                        <Link to="/systemAdminPage/home">
-                                            <button >Login</button>
-                                        </Link>
-
-                                    </div>
-                                )
-                            } else {
-                                return (
-                                    <div>
-
-                                        <button >Login</button>
-
-                                    </div>
-                                )
-                            }
-                        })()}
-
-                        <h2>Default Username: "system"</h2>
-                        <h2>Default Password: "admin"</h2>
-
-                    </div>
+                <div>
+                    <label htmlFor="password-input">Password:&nbsp;&emsp;</label>
+                    <input
+                        ref={passInputRef}
+                        type="password"
+                        id="Password"
+                        name="Password"
+                        onChange={handlePasswordChange}
+                        value={password}
+                    />
+                </div>
+                <div>
+                    {(() => {
+                        if (username === "system" && password === "admin") {
+                            return (<div>
+                                <Link to="/systemAdminPage/home">
+                                    <button>Login</button>
+                                </Link>
+                            </div>)
+                        } else {
+                            return (<div>
+                                <button>Login</button>
+                            </div>)
+                        }
+                    })()}
                 </div>
             </div>
         </div>
-    );
+    </div>);
 }
-
 export default HomePage;
-
-
