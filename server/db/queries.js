@@ -4,7 +4,7 @@ client.connect();
 
 const getSupplies = () => {
     const query = {
-        text: 'SELECT * FROM supplies ',
+        text: 'SELECT * FROM synthea.supplies ',
         rowMode: 'array',
     };
 
@@ -16,7 +16,7 @@ const getSupplies = () => {
 
 const getPatientsByAge = (minAge, maxAge) => {
     const query = {
-        text: 'SELECT * FROM patient_diagnosis_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
+        text: 'SELECT * FROM synthea.patient_diagnosis_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
         rowMode: 'array',
     };
 
@@ -26,21 +26,11 @@ const getPatientsByAge = (minAge, maxAge) => {
         });
 };
 
-const getCarePlans = () => {
-    const query = {
-        text: 'SELECT id, patient, encounter, code, description FROM careplans',
-        rowMode: 'array',
-    };
 
-    return client.query(query)
-        .then((results) => {
-            return results.rows;
-        });
-};
 
 const getAllergies = () => {
     const query = {
-        text: 'SELECT patient, code, system, description, type, category FROM allergies',
+        text: 'SELECT patient_id, code, system, description, type, category FROM synthea.allergies',
         rowMode: 'array',
     };
 
@@ -52,7 +42,7 @@ const getAllergies = () => {
 
 const getMedicationsByAge = (minAge, maxAge) => {
     const query = {
-        text: 'SELECT * FROM medication_filled_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
+        text: 'SELECT * FROM synthea.medication_filled_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
         rowMode: 'array',
     };
 
@@ -212,7 +202,6 @@ const getInsulinResults = () => {
 module.exports = {
     getSupplies,
     getPatientsByAge,
-    getCarePlans,
     getAllergies,
     getMedicationsByAge,
     getPopulationChange2020_2021,
