@@ -10,10 +10,23 @@ FROM synthea.patients
 INNER JOIN synthea.conditions ON conditions.patient_id = patients.id
 ORDER BY years_old ASC;
 
-CREATE VIEW synthea.peanut_allergenic AS
+CREATE VIEW synthea.peanut_allergy_patients AS
 SELECT description, COUNT(description) AS allergenic_patients
 FROM synthea.allergies
-WHERE description = 'Peanut (substance)'
+WHERE description LIKE 'Peanut%'
+GROUP BY description;
+
+CREATE VIEW synthea.average_peanut_medication_statistics AS
+SELECT description, ROUND(AVG(dispenses), 0) AS average_dispensed, DATE_PART('day', AVG(time_interval))::NUMERIC AS average_time_interval
+FROM(SELECT DISTINCT (medications.patient_id), medications.description, medications.dispenses, MAX(CURRENT_DATE) - MIN(start_date) AS time_interval
+     FROM synthea.medications
+     JOIN (SELECT medications.description
+            FROM synthea.allergies
+            JOIN synthea.medications ON medications.encounter_id = allergies.encounter_id
+            WHERE allergies.description LIKE 'Peanut%'
+            GROUP BY medications.description) AS peanut_allergy_medications
+     ON peanut_allergy_medications.description = medications.description
+     GROUP BY medications.patient_id, medications.description, medications.dispenses) AS peanut_medication_statistics
 GROUP BY description;
 
 CREATE VIEW synthea.diabetic_patients AS
@@ -35,18 +48,15 @@ FROM synthea.allergies
 WHERE description LIKE '%pollen%'
 GROUP BY description;
 
-CREATE VIEW synthea.pollen_allergy_medications AS
-SELECT medications.description
-FROM synthea.allergies
-JOIN synthea.medications ON medications.encounter_id = allergies.encounter_id
-WHERE allergies.description LIKE '%pollen%'
-GROUP BY medications.description;
-
 CREATE VIEW synthea.average_pollen_medication_statistics AS
 SELECT description, ROUND(AVG(dispenses), 0) AS average_dispensed, DATE_PART('day', AVG(time_interval))::NUMERIC AS average_time_interval
 FROM(SELECT DISTINCT (medications.patient_id), medications.description, medications.dispenses, MAX(CURRENT_DATE) - MIN(start_date) AS time_interval
      FROM synthea.medications
-     JOIN synthea.pollen_allergy_medications
+     JOIN (SELECT medications.description
+            FROM synthea.allergies
+            JOIN synthea.medications ON medications.encounter_id = allergies.encounter_id
+            WHERE allergies.description LIKE '%pollen%'
+            GROUP BY medications.description) AS pollen_allergy_medications
      ON pollen_allergy_medications.description = medications.description
      GROUP BY medications.patient_id, medications.description, medications.dispenses) AS pollen_medication_statistics
 GROUP BY description;
