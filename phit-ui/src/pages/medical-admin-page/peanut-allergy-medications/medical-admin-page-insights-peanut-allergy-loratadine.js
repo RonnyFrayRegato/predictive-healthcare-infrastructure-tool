@@ -1,11 +1,11 @@
-import './insights-page.css'
+import '../insights-page.css'
 import {Link} from 'react-router-dom';
 import React from "react"
 
-const MedicalAdminPageInsightsDiabetesInsulin = () => {
+const MedicalAdminPageInsightsPeanutAllergyLoratadine = () => {
      const [data, setData] = React.useState(null);
       React.useEffect(() => {
-         fetch("/insulinPrediction")
+         fetch("/loratadinePeanut\n")
              .then((res) => res.json())
             .then((data) => setData(data.message));
       }, []);
@@ -18,7 +18,7 @@ const MedicalAdminPageInsightsDiabetesInsulin = () => {
         </div>
         <div>
             <div className="medical-admin-insights-title">
-                Insulin Predictions
+                Loratadine Predictions
             </div>
             <div className="medical-admin-table-wrapper">
                 {(() => {
@@ -40,14 +40,14 @@ const MedicalAdminPageInsightsDiabetesInsulin = () => {
                 })()}
             </div>
             <div className="row">
-                <Link to="/medicalAdminPage/insights/diabetes-medications">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-medications">
                     <button className="back">Back</button>
                 </Link>
-                <Link to="/medicalAdminPage/insights/diabetes">
+                <Link to="/medicalAdminPage/insights/peanutAllergy">
                     <button className="selection">Patients</button>
                 </Link>
             </div>
         </div>
     </div>);
 }
-export default MedicalAdminPageInsightsDiabetesInsulin;
+export default MedicalAdminPageInsightsPeanutAllergyLoratadine;

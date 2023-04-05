@@ -14,31 +14,31 @@ const MedicalAdminPageInsightsPeanutAllergyMedications = () => {
                 Select a Medication:
             </div>
             <div className="row">
-                <Link to="/medicalAdminPage/insights/diabetes-insulin">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-terfenadine">
                     <button className="medicine">Terfenadine</button>
                 </Link>
-                <Link to="/medicalAdminPage/insights/diabetes-insulin">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-astemizole">
                     <button className="medicine">Astemizole</button>
                 </Link>
                 <br/>
-                <Link to="/medicalAdminPage/insights/diabetes-insulin">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-epinephrine">
                     <button className="medicine">Epinephrine</button>
                 </Link>
-                <Link to="/medicalAdminPage/insights/diabetes-insulin">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-cetrizine-hydrochloride">
                     <button className="medicine">Cetrizine Hydrochloride</button>
                 </Link>
                 <br/>
-                <Link to="/medicalAdminPage/insights/diabetes-insulin">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-chlorpheniramine-maleate">
                     <button className="medicine">Chlorpheniramine Maleate</button>
                 </Link>
-                <Link to="/medicalAdminPage/insights/diabetes-insulin">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-fexofendadine-hydrochloride">
                     <button className="medicine">Fexofenadine Hydrochloride</button>
                 </Link>
                 <br/>
-                <Link to="/medicalAdminPage/insights/diabetes-insulin">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-diphenhydramine-hydrochloride">
                     <button className="medicine">Diphenhydramine Hydrochloride</button>
                 </Link>
-                <Link to="/medicalAdminPage/insights/diabetes-insulin">
+                <Link to="/medicalAdminPage/insights/peanutAllergy-lortadine">
                     <button className="medicine">Loratadine</button>
                 </Link>
                 <br/>
