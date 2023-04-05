@@ -176,10 +176,51 @@ const getPeanutMedicationDays = (description) => {
         });
 };
 
-const getMedicationUnitsDispensed = (description) => {
+const getPeanutMedicationUnitsDispensed = (description) => {
 
     const query = {
         text: "SELECT average_dispensed FROM synthea.average_peanut_medication_statistics WHERE code = $1",
+        rowMode: 'array',
+    };
+
+    return client.query(query, [description])
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getTotalPollenAllergyPatients = () => {
+
+    const query = {
+        text: "SELECT pollen_allergy_patients FROM synthea.pollen_allergy_patients",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+
+            let totalPatients = results.rows[0] + results.rows[1];
+
+            return totalPatients;
+        });
+};
+
+const getPollenMedicationDays = (description) => {
+    const query = {
+        text: "SELECT average_time_interval FROM synthea.average_pollen_medication_statistics WHERE code = $1",
+        rowMode: 'array',
+    };
+
+    return client.query(query, [description])
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getPollenMedicationUnitsDispensed = (description) => {
+
+    const query = {
+        text: "SELECT average_dispensed FROM synthea.average_pollen_medication_statistics WHERE code = $1",
         rowMode: 'array',
     };
 
@@ -203,5 +244,8 @@ module.exports = {
     insertResults,
     truncateTable,
     getPeanutMedicationDays,
-    getMedicationUnitsDispensed
+    getPeanutMedicationUnitsDispensed,
+    getPollenMedicationDays,
+    getPollenMedicationUnitsDispensed,
+    getTotalPollenAllergyPatients
 };
