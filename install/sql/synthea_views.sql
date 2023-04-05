@@ -17,17 +17,17 @@ WHERE description LIKE 'Peanut%'
 GROUP BY description;
 
 CREATE VIEW synthea.average_peanut_medication_statistics AS
-SELECT description, ROUND(AVG(dispenses), 0) AS average_dispensed, DATE_PART('day', AVG(time_interval))::NUMERIC AS average_time_interval
-FROM(SELECT DISTINCT (medications.patient_id), medications.description, medications.dispenses, MAX(CURRENT_DATE) - MIN(start_date) AS time_interval
+SELECT code, description, ROUND(AVG(dispenses), 0) AS average_dispensed, DATE_PART('day', AVG(time_interval))::NUMERIC AS average_time_interval
+FROM(SELECT DISTINCT (medications.patient_id), medications.code, medications.description, medications.dispenses, MAX(CURRENT_DATE) - MIN(start_date) AS time_interval
      FROM synthea.medications
-     JOIN (SELECT medications.description
-            FROM synthea.allergies
-            JOIN synthea.medications ON medications.encounter_id = allergies.encounter_id
-            WHERE allergies.description LIKE 'Peanut%'
-            GROUP BY medications.description) AS peanut_allergy_medications
-     ON peanut_allergy_medications.description = medications.description
-     GROUP BY medications.patient_id, medications.description, medications.dispenses) AS peanut_medication_statistics
-GROUP BY description;
+              JOIN (SELECT medications.code, medications.description
+                    FROM synthea.allergies
+                             JOIN synthea.medications ON medications.encounter_id = allergies.encounter_id
+                    WHERE allergies.description LIKE 'Peanut%'
+                    GROUP BY medications.description, medications.code) AS peanut_allergy_medications
+                   ON peanut_allergy_medications.description = medications.description
+     GROUP BY medications.patient_id, medications.description, medications.code, medications.dispenses) AS peanut_medication_statistics
+GROUP BY description, code ORDER BY description ASC;
 
 CREATE VIEW synthea.diabetic_patients AS
 SELECT reason_description AS description, COUNT(DISTINCT patient_id) AS diabetic_patients
@@ -49,14 +49,14 @@ WHERE description LIKE '%pollen%'
 GROUP BY description;
 
 CREATE VIEW synthea.average_pollen_medication_statistics AS
-SELECT description, ROUND(AVG(dispenses), 0) AS average_dispensed, DATE_PART('day', AVG(time_interval))::NUMERIC AS average_time_interval
-FROM(SELECT DISTINCT (medications.patient_id), medications.description, medications.dispenses, MAX(CURRENT_DATE) - MIN(start_date) AS time_interval
+SELECT code,description, ROUND(AVG(dispenses), 0) AS average_dispensed, DATE_PART('day', AVG(time_interval))::NUMERIC AS average_time_interval
+FROM(SELECT DISTINCT (medications.patient_id), medications.code, medications.description, medications.dispenses, MAX(CURRENT_DATE) - MIN(start_date) AS time_interval
      FROM synthea.medications
-     JOIN (SELECT medications.description
-            FROM synthea.allergies
-            JOIN synthea.medications ON medications.encounter_id = allergies.encounter_id
-            WHERE allergies.description LIKE '%pollen%'
-            GROUP BY medications.description) AS pollen_allergy_medications
-     ON pollen_allergy_medications.description = medications.description
-     GROUP BY medications.patient_id, medications.description, medications.dispenses) AS pollen_medication_statistics
-GROUP BY description;
+              JOIN (SELECT medications.code, medications.description
+                    FROM synthea.allergies
+                             JOIN synthea.medications ON medications.encounter_id = allergies.encounter_id
+                    WHERE allergies.description LIKE '%pollen%'
+                    GROUP BY medications.description, medications.code) AS pollen_allergy_medications
+                   ON pollen_allergy_medications.description = medications.description
+     GROUP BY medications.patient_id, medications.description, medications.code, medications.dispenses) AS pollen_medication_statistics
+GROUP BY description, code ORDER BY description ASC;

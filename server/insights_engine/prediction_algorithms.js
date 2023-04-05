@@ -1,20 +1,21 @@
 const {
     getPopulationChange2020_2021,
     getTotalPeanutAllergyPatients,
-    insertPeanutAllergyResults,
-    getPeanutAllergyResults,
     getTotalDiabeticPatients,
-    insertDiabeticResults,
-    getDiabeticResults,
     getInsulinDays,
     getInsulinUnitsDispensed,
-    getInsulinResults,
-    insertInsulinResults,
+    getResults,
+    insertResults,
+    truncateTable,
+    getPeanutMedicationDays,
+    getMedicationUnitsDispensed,
 } = require('../db/queries');
 
 async function calculatePeanutAllergy() {
     return new Promise(async (resolve, reject) => {
         try {
+            truncateTable();
+
             let populationChange = await getPopulationChange2020_2021();
             populationChange = parseFloat(populationChange[0]) + 1;
 
@@ -24,12 +25,12 @@ async function calculatePeanutAllergy() {
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertPeanutAllergyResults(currentYear, patientsWithPeanutAllergy);
+                await insertResults(currentYear, patientsWithPeanutAllergy);
 
                 patientsWithPeanutAllergy = patientsWithPeanutAllergy * populationChange;
             }
 
-            const peanutAllergyResults = await getPeanutAllergyResults();
+            const peanutAllergyResults = await getResults();
             resolve(peanutAllergyResults);
         } catch (error) {
             reject(error);
@@ -41,6 +42,8 @@ async function calculatePeanutAllergy() {
 async function calculateDiabetic() {
     return new Promise(async (resolve, reject) => {
         try {
+            truncateTable();
+
             let populationChange = await getPopulationChange2020_2021();
             populationChange = parseFloat(populationChange[0]) + 1;
 
@@ -50,12 +53,12 @@ async function calculateDiabetic() {
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertDiabeticResults(currentYear, patientsWithDiabetes);
+                await insertResults(currentYear, patientsWithDiabetes);
 
                 patientsWithDiabetes = patientsWithDiabetes * populationChange;
             }
 
-            const diabeticResults = await getDiabeticResults();
+            const diabeticResults = await getResults();
             resolve(diabeticResults);
         } catch (error) {
             reject(error);
@@ -66,31 +69,36 @@ async function calculateDiabetic() {
 async function calculateInsulin() {
     return new Promise(async (resolve, reject) => {
         try {
+            truncateTable();
+
+
             let populationChange = await getPopulationChange2020_2021();
             populationChange = parseFloat(populationChange[0]) + 1;
 
 
-            let insulinDays = await getInsulinDays();
-            let insulinYears = parseFloat(insulinDays[0]) / 365;
+            let insulinPerDay = await getInsulinDays();
+            let insulinPerYear = parseFloat(insulinPerDay[0]) / 365;
 
             let totalInsulinUnits = await getInsulinUnitsDispensed();
             totalInsulinUnits = parseFloat(totalInsulinUnits[0]);
 
+            let unitsPerYear = totalInsulinUnits / insulinPerYear;
 
+            let patientsWithDiabetes = await getTotalDiabeticPatients();
+            patientsWithDiabetes = parseFloat(patientsWithDiabetes[0]);
 
-            let unitsPerYear = totalInsulinUnits / insulinYears;
-
+            let totalInsulinUsedPerYear = unitsPerYear * patientsWithDiabetes;
 
             let currentYear = 2023;
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertInsulinResults(currentYear, unitsPerYear);
+                await insertResults(currentYear, totalInsulinUsedPerYear);
 
-                unitsPerYear = unitsPerYear * populationChange;
+                totalInsulinUsedPerYear = totalInsulinUsedPerYear * populationChange;
             }
 
-            const insulinResults = await getInsulinResults();
+            const insulinResults = await getResults();
             resolve(insulinResults);
         } catch (error) {
             reject(error);
@@ -99,9 +107,50 @@ async function calculateInsulin() {
 }
 
 
+async function calculatePeanutMedication(description) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            truncateTable();
+
+            let populationChange = await getPopulationChange2020_2021();
+            populationChange = parseFloat(populationChange[0]) + 1;
+
+            let medicationPerDay = await getPeanutMedicationDays(description);
+            let medicationsPerYear = parseFloat(medicationPerDay[0]) / 365;
+
+            let totalMedicationUnits = await getMedicationUnitsDispensed(description);
+            totalMedicationUnits = parseFloat(totalMedicationUnits[0]);
+
+            let unitsPerYear = totalMedicationUnits / medicationsPerYear;
+
+            let patientsWithPeanutAllergy = await getTotalPeanutAllergyPatients();
+            patientsWithPeanutAllergy = parseFloat(patientsWithPeanutAllergy[0]);
+
+            let totalMedicationUsedPerYear = unitsPerYear * patientsWithPeanutAllergy;
+
+            let currentYear = 2023;
+            const predictYear = 2045;
+            for (currentYear; currentYear < predictYear + 1; currentYear++) {
+
+                await insertResults(currentYear, totalMedicationUsedPerYear);
+
+                totalMedicationUsedPerYear = totalMedicationUsedPerYear * populationChange;
+            }
+
+            const medicationResults = await getResults();
+            resolve(medicationResults);
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+
+
 
 module.exports = {
     calculatePeanutAllergy,
     calculateDiabetic,
-    calculateInsulin
+    calculateInsulin,
+    calculatePeanutMedication,
 };

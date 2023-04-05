@@ -68,7 +68,7 @@ const getPopulationChange2020_2021 = () => {
 const getTotalPeanutAllergyPatients = () => {
 
     const query = {
-        text: "SELECT allergenic_patients FROM synthea.peanut_allergenic",
+        text: "SELECT allergenic_patients FROM synthea.peanut_allergy_patients",
         rowMode: 'array',
     };
 
@@ -78,32 +78,7 @@ const getTotalPeanutAllergyPatients = () => {
         });
 };
 
-const getPeanutAllergyResults = () => {
 
-    const query = {
-        text: "SELECT * FROM acs.peanut_allergy_results",
-        rowMode: 'array',
-    };
-
-    return client.query(query)
-        .then((results) => {
-            return results.rows;
-        });
-};
-
-const insertPeanutAllergyResults = (year, totalPatients) => {
-
-    const insertQuery = {
-        text: 'INSERT INTO acs.peanut_allergy_results(year, total_patients) VALUES($1, $2)',
-        values: [year, totalPatients],
-    };
-
-    client.query(insertQuery, (err, res) => {
-        if (err) {
-            console.log(err.stack);
-        }
-    });
-};
 
 const getTotalDiabeticPatients = () => {
 
@@ -119,37 +94,14 @@ const getTotalDiabeticPatients = () => {
 };
 
 
-const insertDiabeticResults = (year, totalPatients) => {
 
-    const insertQuery = {
-        text: 'INSERT INTO acs.diabetic_results(year, total_patients) VALUES($1, $2)',
-        values: [year, totalPatients],
-    };
 
-    client.query(insertQuery, (err, res) => {
-        if (err) {
-            console.log(err.stack);
-        }
-    });
-};
 
-const getDiabeticResults = () => {
-
-    const query = {
-        text: "SELECT * FROM acs.diabetic_results",
-        rowMode: 'array',
-    };
-
-    return client.query(query)
-        .then((results) => {
-            return results.rows;
-        });
-};
 
 const getInsulinDays = () => {
 
     const query = {
-        text: "SELECT average_time_interval FROM synthea.average_diabetic_statistics",
+        text: "SELECT average_time_interval FROM synthea.average_diabetic_medication_statistics",
         rowMode: 'array',
     };
 
@@ -162,7 +114,7 @@ const getInsulinDays = () => {
 const getInsulinUnitsDispensed = () => {
 
     const query = {
-        text: "SELECT average_total_units_dispensed FROM synthea.average_diabetic_statistics",
+        text: "SELECT average_units_dispensed FROM synthea.average_diabetic_medication_statistics",
         rowMode: 'array',
     };
 
@@ -172,11 +124,11 @@ const getInsulinUnitsDispensed = () => {
         });
 };
 
-const insertInsulinResults = (year, totalUnits) => {
+const insertResults = (year, total) => {
 
     const insertQuery = {
-        text: 'INSERT INTO acs.insulin_results(year, total_units) VALUES($1, $2)',
-        values: [year, totalUnits],
+        text: 'INSERT INTO acs.results(year, total) VALUES($1, $2)',
+        values: [year, total],
     };
 
     client.query(insertQuery, (err, res) => {
@@ -186,16 +138,54 @@ const insertInsulinResults = (year, totalUnits) => {
     });
 };
 
-const getInsulinResults = () => {
+const getResults = () => {
 
     const query = {
-        text: "SELECT * FROM acs.insulin_results",
+        text: "SELECT * FROM acs.results",
         rowMode: 'array',
     };
 
     return client.query(query)
         .then((results) => {
             return results.rows;
+        });
+};
+
+const truncateTable = () => {
+
+    const truncateQuery = {
+        text: "TRUNCATE TABLE acs.results",
+    };
+
+    client.query(truncateQuery, (err, res) => {
+        if (err) {
+            console.log(err.stack);
+        }
+    });
+};
+
+const getPeanutMedicationDays = (description) => {
+    const query = {
+        text: "SELECT average_time_interval FROM synthea.average_peanut_medication_statistics WHERE code = $1",
+        rowMode: 'array',
+    };
+
+    return client.query(query, [description])
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getMedicationUnitsDispensed = (description) => {
+
+    const query = {
+        text: "SELECT average_dispensed FROM synthea.average_peanut_medication_statistics WHERE code = $1",
+        rowMode: 'array',
+    };
+
+    return client.query(query, [description])
+        .then((results) => {
+            return results.rows[0];
         });
 };
 
@@ -206,13 +196,12 @@ module.exports = {
     getMedicationsByAge,
     getPopulationChange2020_2021,
     getTotalPeanutAllergyPatients,
-    insertPeanutAllergyResults,
-    getPeanutAllergyResults,
     getTotalDiabeticPatients,
-    insertDiabeticResults,
-    getDiabeticResults,
     getInsulinDays,
     getInsulinUnitsDispensed,
-    getInsulinResults,
-    insertInsulinResults
+    getResults,
+    insertResults,
+    truncateTable,
+    getPeanutMedicationDays,
+    getMedicationUnitsDispensed
 };
