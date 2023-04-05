@@ -31,6 +31,7 @@ import MedicalAdminPageInsightsPeanutAllergyLoratadine
     from "./pages/medical-admin-page/peanut-allergy-medications/medical-admin-page-insights-peanut-allergy-loratadine";
 import MedicalAdminPageInsightsPeanutAllergyDiphenhydramineHydrochloride
     from "./pages/medical-admin-page/peanut-allergy-medications/medical-admin-page-insights-peanut-allergy-diphenhydramine-hydrochloride";
+import MedicalAdminPageInsightsHypertension from "./pages/medical-admin-page/medical-admin-page-insights-hypertension";
 import SystemAdminHomePage from './pages/system-admin-page/system-admin-home-page';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -56,6 +57,8 @@ function App() {
             <Route path="/medicalAdminPage/insights/peanutAllergy-fexofendadine-hydrochloride" element={<MedicalAdminPageInsightsPeanutAllergyFexofenadineHydrochloride/>}/>
             <Route path="/medicalAdminPage/insights/peanutAllergy-lortadine" element={<MedicalAdminPageInsightsPeanutAllergyLoratadine/>}/>
             <Route path="/medicalAdminPage/insights/peanutAllergy-diphenhydramine-hydrochloride" element={<MedicalAdminPageInsightsPeanutAllergyDiphenhydramineHydrochloride/>}/>
+            <Route path="/medicalAdminPage/insights/hypertension" element={<MedicalAdminPageInsightsHypertension/>}/>
+
             <Route path="/systemAdminPage/home" element={<SystemAdminHomePage/>}/>
         </Routes>
     </BrowserRouter>);
