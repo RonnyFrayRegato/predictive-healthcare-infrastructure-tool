@@ -13,6 +13,8 @@ import MedicalAdminPageInsightsDiabetesInsulin
     from "./pages/medical-admin-page/medical-admin-page-insights-diabetes-insulin";
 import MedicalAdminPageInsightsPeanutAllergy
     from "./pages/medical-admin-page/medical-admin-page-insights-peanut-allergy";
+import MedicalAdminPageInsightsPeanutAllergyMedications
+    from "./pages/medical-admin-page/medical-admin-page-insights-peanut-allergy-medications";
 import SystemAdminHomePage from './pages/system-admin-page/system-admin-home-page';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -29,6 +31,8 @@ function App() {
             <Route path="/medicalAdminPage/insights/diabetes-insulin" element={<MedicalAdminPageInsightsDiabetesInsulin/>}/>
             <Route path="/medicalAdminPage/insights/diabetes-medications" element={<MedicalAdminPageInsightsDiabetesMedications/>}/>
             <Route path="/medicalAdminPage/insights/peanutAllergy" element={<MedicalAdminPageInsightsPeanutAllergy/>}/>
+            <Route path="/medicalAdminPage/insights/peanutAllergy-medications" element={<MedicalAdminPageInsightsPeanutAllergyMedications/>}/>
+
             <Route path="/systemAdminPage/home" element={<SystemAdminHomePage/>}/>
         </Routes>
     </BrowserRouter>);

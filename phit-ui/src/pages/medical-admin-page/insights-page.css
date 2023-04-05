@@ -78,7 +78,6 @@ td {
 
 .row {
     text-align: center;
-    margin-top: 2vh;
 }
 
 .column {
@@ -96,11 +95,12 @@ button.insights {
 }
 button.medicine {
     height: 8vh;
-    width: 32vh;
-    margin-top: 2vh;
-    font-size: 3vh;
+    width: 38vh;
+    font-size: 2.5vh;
     background-color: #6FA8FF;
     color: white;
+    margin-left: 2vh;
+    margin-top: 2vh;
 }
 button.back {
     height: 6vh;
