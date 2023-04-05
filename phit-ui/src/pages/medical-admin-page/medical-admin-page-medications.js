@@ -1,6 +1,4 @@
 import './static-data-page.css'
-import {useState} from 'react';
-import {useRef} from 'react';
 import {Link} from 'react-router-dom';
 import React from "react"
 
@@ -26,6 +24,8 @@ const MedicalAdminPageMedications = () => {
                 <div className="medical-admin-highlighted-text">&emsp;Medications</div>
                 <hr></hr>
                 <Link to="/medicalAdminPage/allergies">&emsp;Allergies</Link>
+                <hr></hr>
+                <Link to="/medicalAdminPage/insights">&emsp;Insights</Link>
                 <hr></hr>
                 <br/>
             </div>
