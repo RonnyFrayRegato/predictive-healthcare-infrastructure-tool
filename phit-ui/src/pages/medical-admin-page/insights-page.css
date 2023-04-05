@@ -94,7 +94,14 @@ button.insights {
     background-color: #6FA8FF;
     color: white;
 }
-
+button.medicine {
+    height: 8vh;
+    width: 32vh;
+    margin-top: 2vh;
+    font-size: 3vh;
+    background-color: #6FA8FF;
+    color: white;
+}
 button.back {
     height: 6vh;
     width: 18vh;

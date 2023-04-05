@@ -2,13 +2,12 @@ import './insights-page.css'
 import {Link} from 'react-router-dom';
 import React from "react"
 
-const MedicalAdminPageInsightsDiabetes = () => {
-
+const MedicalAdminPageInsightsDiabetesInsulin = () => {
      const [data, setData] = React.useState(null);
       React.useEffect(() => {
-        fetch("/diabeticPatientsPrediction")
+         fetch("/insulinPrediction")
              .then((res) => res.json())
-             .then((data) => setData(data.message));
+            .then((data) => setData(data.message));
       }, []);
 
     return (<div className="medical-admin">
@@ -19,7 +18,7 @@ const MedicalAdminPageInsightsDiabetes = () => {
         </div>
         <div>
             <div className="medical-admin-insights-title">
-                Diabetes Patients
+                Insulin Predictions
             </div>
             <div className="medical-admin-table-wrapper">
                 {(() => {
@@ -31,7 +30,7 @@ const MedicalAdminPageInsightsDiabetes = () => {
                         return (<table className="insights">
                             <tr>
                                 <th>Year</th>
-                                <th>Number of Patients</th>
+                                <th>Number of Medications</th>
                             </tr>
                             {data.map((arr, index) => (<tr key={index}>
                                 {arr.map(num => (<td key={num}>{num}</td>))}
@@ -41,14 +40,14 @@ const MedicalAdminPageInsightsDiabetes = () => {
                 })()}
             </div>
             <div className="row">
-                <Link to="/medicalAdminPage/insights">
+                <Link to="/medicalAdminPage/insights/diabetes-medications">
                     <button className="back">Back</button>
                 </Link>
-                <Link to="/medicalAdminPage/insights/diabetes-medications">
-                    <button className="selection">Medications</button>
+                <Link to="/medicalAdminPage/insights/diabetes">
+                    <button className="selection">Patients</button>
                 </Link>
             </div>
         </div>
     </div>);
 }
-export default MedicalAdminPageInsightsDiabetes;
+export default MedicalAdminPageInsightsDiabetesInsulin;

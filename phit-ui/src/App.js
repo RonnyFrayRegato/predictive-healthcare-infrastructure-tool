@@ -7,6 +7,10 @@ import MedicalAdminPageAllergies from './pages/medical-admin-page/medical-admin-
 import MedicalAdminPageMedications from "./pages/medical-admin-page/medical-admin-page-medications";
 import MedicalAdminPageInsights from "./pages/medical-admin-page/medical-admin-page-insights";
 import MedicalAdminPageInsightsDiabetes from "./pages/medical-admin-page/medical-admin-page-insights-diabetes";
+import MedicalAdminPageInsightsDiabetesMedications
+    from "./pages/medical-admin-page/medical-admin-page-insights-diabetes-medications";
+import MedicalAdminPageInsightsDiabetesInsulin
+    from "./pages/medical-admin-page/medical-admin-page-insights-diabetes-insulin";
 import SystemAdminHomePage from './pages/system-admin-page/system-admin-home-page';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -20,6 +24,8 @@ function App() {
             <Route path="/medicalAdminPage/allergies" element={<MedicalAdminPageAllergies/>}/>
             <Route path="/medicalAdminPage/insights" element={<MedicalAdminPageInsights/>}/>
             <Route path="/medicalAdminPage/insights/diabetes" element={<MedicalAdminPageInsightsDiabetes/>}/>
+            <Route path="/medicalAdminPage/insights/diabetes-insulin" element={<MedicalAdminPageInsightsDiabetesInsulin/>}/>
+            <Route path="/medicalAdminPage/insights/diabetes-medications" element={<MedicalAdminPageInsightsDiabetesMedications/>}/>
             <Route path="/systemAdminPage/home" element={<SystemAdminHomePage/>}/>
         </Routes>
     </BrowserRouter>);
