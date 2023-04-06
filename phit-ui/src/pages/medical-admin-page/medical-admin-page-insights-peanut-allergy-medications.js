@@ -42,7 +42,6 @@ const MedicalAdminPageInsightsPeanutAllergyMedications = () => {
                     <button className="medicine">Loratadine</button>
                 </Link>
                 <br/>
-
                 <Link to="/medicalAdminPage/insights">
                     <button className="back">Back</button>
                 </Link>

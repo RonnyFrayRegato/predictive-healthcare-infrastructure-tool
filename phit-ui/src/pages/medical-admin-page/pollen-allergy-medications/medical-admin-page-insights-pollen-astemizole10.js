@@ -1,14 +1,15 @@
-import './insights-page.css'
+import '../insights-page.css'
 import {Link} from 'react-router-dom';
 import React from "react"
 
-const MedicalAdminPageInsightsHypertension = () => {
-     const [data, setData] = React.useState(null);
-      React.useEffect(() => {
-         fetch("/supply")
-             .then((res) => res.json())
+const MedicalAdminPageInsightsPollenAstemizole10 = () => {
+    const [data, setData] = React.useState(null);
+    React.useEffect(() => {
+        fetch("/astemizolePollen")
+            .then((res) => res.json())
             .then((data) => setData(data.message));
-     }, []);
+    }, []);
+
     return (<div className="medical-admin">
         <div className="medical-admin-header">
             <div className="medical-admin-header-text">
@@ -17,7 +18,7 @@ const MedicalAdminPageInsightsHypertension = () => {
         </div>
         <div>
             <div className="medical-admin-insights-title">
-                Hypertension Patients
+                Astemizole 10 MG Predictions
             </div>
             <div className="medical-admin-table-wrapper">
                 {(() => {
@@ -29,7 +30,7 @@ const MedicalAdminPageInsightsHypertension = () => {
                         return (<table className="insights">
                             <tr>
                                 <th>Year</th>
-                                <th>Number of Patients</th>
+                                <th>Number of Medications</th>
                             </tr>
                             {data.map((arr, index) => (<tr key={index}>
                                 {arr.map(num => (<td key={num}>{num}</td>))}
@@ -39,14 +40,14 @@ const MedicalAdminPageInsightsHypertension = () => {
                 })()}
             </div>
             <div className="row">
-                <Link to="/medicalAdminPage/insights">
+                <Link to="/medicalAdminPage/insights/pollen-medications">
                     <button className="back">Back</button>
                 </Link>
-                <Link to="/medicalAdminPage/insights/hypertension-medications">
-                    <button className="selection">Medications</button>
+                <Link to="/medicalAdminPage/insights/pollen">
+                    <button className="selection">Patients</button>
                 </Link>
             </div>
         </div>
     </div>);
 }
-export default MedicalAdminPageInsightsHypertension;
+export default MedicalAdminPageInsightsPollenAstemizole10;

@@ -22,8 +22,8 @@ const MedicalAdminPageInsights = () => {
                     <button className="insights">Diabetes</button>
                 </Link>
                 <br/>
-                <Link to="/medicalAdminPage/insights/hypertension">
-                    <button className="insights">Hypertension</button>
+                <Link to="/medicalAdminPage/insights/pollen">
+                    <button className="insights">Pollen</button>
                 </Link>
                 <br/>
                 <Link to="/medicalAdminPage/supply">

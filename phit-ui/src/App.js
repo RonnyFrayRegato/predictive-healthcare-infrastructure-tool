@@ -31,9 +31,33 @@ import MedicalAdminPageInsightsPeanutAllergyLoratadine
     from "./pages/medical-admin-page/peanut-allergy-medications/medical-admin-page-insights-peanut-allergy-loratadine";
 import MedicalAdminPageInsightsPeanutAllergyDiphenhydramineHydrochloride
     from "./pages/medical-admin-page/peanut-allergy-medications/medical-admin-page-insights-peanut-allergy-diphenhydramine-hydrochloride";
-import MedicalAdminPageInsightsHypertensionMedications
-    from "./pages/medical-admin-page/medical-admin-page-insights-hypertension-medications";
-import MedicalAdminPageInsightsHypertension from "./pages/medical-admin-page/medical-admin-page-insights-hypertension";
+import MedicalAdminPageInsightsPollenMedications
+    from "./pages/medical-admin-page/medical-admin-page-insights-pollen-medications";
+import MedicalAdminPageInsightsPollenAstemizole10
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-astemizole10";
+import MedicalAdminPageInsightsPollenCetirizineHydrochloride10
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-cetirizine-hydrochloride10";
+import MedicalAdminPageInsightsPollenCetirizineHydrochloride5
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-cetirizine-hydrochloride5";
+import MedicalAdminPageInsightsPollenChlorpheniramineMaleate2
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-chlorpheniramine-maleate2";
+import MedicalAdminPageInsightsPollenChlorpheniramineMaleate4
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-chlorpheniramine-maleate4";
+import MedicalAdminPageInsightsPollenDiphenhydramineHydrochloride25
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-diphenhydramine-hydrochloride25";
+import MedicalAdminPageInsightsPollenFexofenadineHydrochloride30
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-fexofenadine-hydrochloride30";
+import MedicalAdminPageInsightsPollenFexofenadineHydrochloride60
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-fexofenadine-hydrochloride60";
+import MedicalAdminPageInsightsPollenLoratadine10
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-loratadine10";
+import MedicalAdminPageInsightsPollenLoratadine5
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-loratadine5";
+import MedicalAdminPageInsightsPollenEpinephrine1
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-epinephrine1";
+import MedicalAdminPageInsightsPollenTerfenadine60
+    from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-terfenadine60";
+import MedicalAdminPageInsightsPollen from "./pages/medical-admin-page/medical-admin-page-insights-pollen";
 import SystemAdminHomePage from './pages/system-admin-page/system-admin-home-page';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -59,9 +83,20 @@ function App() {
             <Route path="/medicalAdminPage/insights/peanutAllergy-fexofendadine-hydrochloride" element={<MedicalAdminPageInsightsPeanutAllergyFexofenadineHydrochloride/>}/>
             <Route path="/medicalAdminPage/insights/peanutAllergy-lortadine" element={<MedicalAdminPageInsightsPeanutAllergyLoratadine/>}/>
             <Route path="/medicalAdminPage/insights/peanutAllergy-diphenhydramine-hydrochloride" element={<MedicalAdminPageInsightsPeanutAllergyDiphenhydramineHydrochloride/>}/>
-            <Route path="/medicalAdminPage/insights/hypertension" element={<MedicalAdminPageInsightsHypertension/>}/>
-            <Route path="/medicalAdminPage/insights/hypertension-medications" element={<MedicalAdminPageInsightsHypertensionMedications/>}/>
-
+            <Route path="/medicalAdminPage/insights/pollen" element={<MedicalAdminPageInsightsPollen/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-medications" element={<MedicalAdminPageInsightsPollenMedications/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-astemizole10" element={<MedicalAdminPageInsightsPollenAstemizole10/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-cetirizine-hydrochloride10" element={<MedicalAdminPageInsightsPollenCetirizineHydrochloride10/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-cetirizine-hydrochloride5" element={<MedicalAdminPageInsightsPollenCetirizineHydrochloride5/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-chlorpheniramine-maleate2" element={<MedicalAdminPageInsightsPollenChlorpheniramineMaleate2/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-chlorpheniramine-maleate4" element={<MedicalAdminPageInsightsPollenChlorpheniramineMaleate4/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-diphenhydramine-hydrochloride25" element={<MedicalAdminPageInsightsPollenDiphenhydramineHydrochloride25/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-fexofenadine-hydrochloride30" element={<MedicalAdminPageInsightsPollenFexofenadineHydrochloride30/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-fexofenadine-hydrochloride60" element={<MedicalAdminPageInsightsPollenFexofenadineHydrochloride60/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-loratadine10" element={<MedicalAdminPageInsightsPollenLoratadine10/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-loratadine5" element={<MedicalAdminPageInsightsPollenLoratadine5/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-epinephrine1" element={<MedicalAdminPageInsightsPollenEpinephrine1/>}/>
+            <Route path="/medicalAdminPage/insights/pollen-terfenadine60" element={<MedicalAdminPageInsightsPollenTerfenadine60/>}/>
             <Route path="/systemAdminPage/home" element={<SystemAdminHomePage/>}/>
         </Routes>
     </BrowserRouter>);
