@@ -52,11 +52,11 @@ const MedicalAdminPageMedications = () => {
                     } else {
                         return (<table>
                             <tr>
-                                <th>Date</th>
-                                <th>Patient Name</th>
-                                <th>Birth Date</th>
-                                <th>Age</th>
+                                <th>ID</th>
+                                <th>Years Old</th>
+                                <th>Code</th>
                                 <th>Description</th>
+                                <th>Dispenses</th>
                             </tr>
                             {data.map((arr, index) => (<tr key={index}>
                                 {arr.map(num => (<td key={num}>{num}</td>))}
