@@ -57,7 +57,6 @@ const MedicalAdminPageMedications = () => {
                                 <th>Birth Date</th>
                                 <th>Age</th>
                                 <th>Description</th>
-                                <th>Quantity</th>
                             </tr>
                             {data.map((arr, index) => (<tr key={index}>
                                 {arr.map(num => (<td key={num}>{num}</td>))}

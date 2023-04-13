@@ -5,7 +5,7 @@ import React from "react"
 const MedicalAdminPageInsightsPeanutAllergy = () => {
      const [data, setData] = React.useState(null);
       React.useEffect(() => {
-         fetch("/supply")
+         fetch("/peanutPatientsPrediction")
              .then((res) => res.json())
             .then((data) => setData(data.message));
       }, []);
