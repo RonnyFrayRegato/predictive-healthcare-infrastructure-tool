@@ -1,4 +1,4 @@
-const client = require('./conn'); // Import the client instance.
+const client = require('./conn');
 
 client.connect();
 

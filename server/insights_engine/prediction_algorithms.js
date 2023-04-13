@@ -8,7 +8,9 @@ const {
     insertResults,
     truncateTable,
     getPeanutMedicationDays,
-    getPeanutMedicationUnitsDispensed, getPollenMedicationDays, getPollenMedicationUnitsDispensed,
+    getPeanutMedicationUnitsDispensed,
+    getPollenMedicationDays,
+    getPollenMedicationUnitsDispensed,
     getTotalPollenAllergyPatients,
 } = require('../db/queries');
 

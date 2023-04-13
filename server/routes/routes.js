@@ -1,8 +1,19 @@
 const express = require('express');
-const {getSupplies, getPatientsByAge, getCarePlans, getAllergies, getMedicationsByAge} = require('../db/queries');
+
 const {
-    calculatePeanutAllergy, calculateDiabetic, calculateInsulin, calculatePeanutMedication,
-    calculatePollenMedication, calculatePollenAllergy
+    getSupplies,
+    getPatientsByAge,
+    getAllergies,
+    getMedicationsByAge
+} = require('../db/queries');
+
+const {
+    calculatePeanutAllergy,
+    calculateDiabetic,
+    calculateInsulin,
+    calculatePeanutMedication,
+    calculatePollenMedication,
+    calculatePollenAllergy
 } = require("../insights_engine/prediction_algorithms");
 
 const router = express.Router();
@@ -20,17 +31,6 @@ router.get('/supply', (req, res) => {
 
 router.get('/patients/:minAge/:maxAge', (req, res) => {
     getPatientsByAge(req.params.minAge, req.params.maxAge)
-        .then((data) => {
-            res.json({message: data});
-        })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send('Internal Server Error');
-        });
-});
-
-router.get('/carePlans', (req, res) => {
-    getCarePlans()
         .then((data) => {
             res.json({message: data});
         })
@@ -333,6 +333,5 @@ router.get('/terfenadinePollen', (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 });
-
 
 module.exports = router;
