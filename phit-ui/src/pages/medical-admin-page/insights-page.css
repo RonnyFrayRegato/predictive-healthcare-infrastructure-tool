@@ -32,8 +32,8 @@ a:hover {
     text-align: center;
     margin-top: 2vh;
     font-size: 8vh;
+    margin-bottom: 5vh;
 }
-
 
 .medical-admin-table-wrapper {
     overflow-y: auto;
@@ -49,7 +49,6 @@ table.insights {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5vh;
     width: 50vh;
     color: black;
 }
@@ -93,6 +92,7 @@ button.insights {
     background-color: #6FA8FF;
     color: white;
 }
+
 button.medicine {
     height: 8vh;
     width: 38vh;
@@ -102,6 +102,7 @@ button.medicine {
     margin-left: 2vh;
     margin-top: 2vh;
 }
+
 button.back {
     height: 6vh;
     width: 18vh;
