@@ -28,7 +28,7 @@ async function calculatePeanutAllergy() {
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertResults(currentYear, patientsWithPeanutAllergy);
+                await insertResults(currentYear, patientsWithPeanutAllergy.toFixed(3));
 
                 patientsWithPeanutAllergy = patientsWithPeanutAllergy * populationChange;
             }
@@ -56,7 +56,7 @@ async function calculateDiabetic() {
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertResults(currentYear, patientsWithDiabetes);
+                await insertResults(currentYear, patientsWithDiabetes.toFixed(3));
 
                 patientsWithDiabetes = patientsWithDiabetes * populationChange;
             }
@@ -96,7 +96,7 @@ async function calculateInsulin() {
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertResults(currentYear, totalInsulinUsedPerYear);
+                await insertResults(currentYear, totalInsulinUsedPerYear.toFixed(3));
 
                 totalInsulinUsedPerYear = totalInsulinUsedPerYear * populationChange;
             }
@@ -135,7 +135,7 @@ async function calculatePeanutMedication(description) {
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertResults(currentYear, totalMedicationUsedPerYear);
+                await insertResults(currentYear, totalMedicationUsedPerYear.toFixed(3));
 
                 totalMedicationUsedPerYear = totalMedicationUsedPerYear * populationChange;
             }
@@ -162,7 +162,7 @@ async function calculatePollenAllergy() {
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertResults(currentYear, patientsWithPollenAllergy);
+                await insertResults(currentYear, patientsWithPollenAllergy.toFixed(3));
 
                 patientsWithPollenAllergy = patientsWithPollenAllergy * populationChange;
             }
@@ -200,7 +200,7 @@ async function calculatePollenMedication(description) {
             const predictYear = 2045;
             for (currentYear; currentYear < predictYear + 1; currentYear++) {
 
-                await insertResults(currentYear, totalMedicationUsedPerYear);
+                await insertResults(currentYear, totalMedicationUsedPerYear.toFixed(3));
 
                 totalMedicationUsedPerYear = totalMedicationUsedPerYear * populationChange;
             }
