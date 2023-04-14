@@ -35,6 +35,8 @@ jobs:
       run: |
         sleep 5s
         docker ps -a
+    - name: Print working directory
+      run: pwd
     - name: Configure database with Synthea data
       run: |
         cd install/
