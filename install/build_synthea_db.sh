@@ -15,8 +15,7 @@ sudo docker exec -i pg psql -U postgres -d phit -c "CREATE SCHEMA IF NOT EXISTS 
 
 # Create relation structure for database
 echo "Creating relation structure for database..."
-pwd
-sudo docker cp /sql/synthea_template.sql pg:/home
+sudo docker cp /home/runner/work/predictive-healthcare-infrastructure-tool/predictive-healthcare-infrastructure-tool/install/sql/synthea_template.sql pg:/home
 sudo docker exec -i pg psql -U postgres -d phit -f "/home/synthea_template.sql"
 
 # Generate Synthea Data
@@ -33,5 +32,5 @@ done
 
 # Create database Views
 echo "Creating database views..."
-sudo docker cp /sql/views_template.sql pg:/home
+sudo docker cp /home/runner/work/predictive-healthcare-infrastructure-tool/predictive-healthcare-infrastructure-tool/install/sql/views_template.sql pg:/home
 sudo docker exec -i pg psql -U postgres -d phit -f "/home/views_template.sql"
