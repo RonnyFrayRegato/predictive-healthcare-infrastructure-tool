@@ -1,10 +1,10 @@
-const client = require('./conn'); // Import the client instance.
+const client = require('./conn');
 
 client.connect();
 
 const getSupplies = () => {
     const query = {
-        text: 'SELECT * FROM supplies ',
+        text: 'SELECT * FROM synthea.supplies ',
         rowMode: 'array',
     };
 
@@ -16,7 +16,7 @@ const getSupplies = () => {
 
 const getPatientsByAge = (minAge, maxAge) => {
     const query = {
-        text: 'SELECT * FROM patient_diagnosis_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
+        text: 'SELECT * FROM synthea.patient_diagnosis_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
         rowMode: 'array',
     };
 
@@ -26,21 +26,9 @@ const getPatientsByAge = (minAge, maxAge) => {
         });
 };
 
-const getCarePlans = () => {
-    const query = {
-        text: 'SELECT id, patient, encounter, code, description FROM careplans',
-        rowMode: 'array',
-    };
-
-    return client.query(query)
-        .then((results) => {
-            return results.rows;
-        });
-};
-
 const getAllergies = () => {
     const query = {
-        text: 'SELECT patient, code, system, description, type, category FROM allergies',
+        text: 'SELECT patient_id, code, system, description, type, category FROM synthea.allergies',
         rowMode: 'array',
     };
 
@@ -52,7 +40,7 @@ const getAllergies = () => {
 
 const getMedicationsByAge = (minAge, maxAge) => {
     const query = {
-        text: 'SELECT * FROM medication_filled_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
+        text: 'SELECT * FROM synthea.medication_filled_by_age_ascending WHERE years_old > $1 AND years_old <= $2',
         rowMode: 'array',
     };
 
@@ -62,10 +50,193 @@ const getMedicationsByAge = (minAge, maxAge) => {
         });
 };
 
+const getPopulationChange2020_2021 = () => {
+
+    const query = {
+        text: "SELECT percent_change FROM acs.population_change WHERE year_range = '2020-2021'",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getTotalPeanutAllergyPatients = () => {
+
+    const query = {
+        text: "SELECT allergenic_patients FROM synthea.peanut_allergy_patients",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getTotalDiabeticPatients = () => {
+
+    const query = {
+        text: "SELECT diabetic_patients FROM synthea.diabetic_patients WHERE description = 'Diabetes mellitus type 2 (disorder)'",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getInsulinDays = () => {
+
+    const query = {
+        text: "SELECT average_time_interval FROM synthea.average_diabetic_medication_statistics",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getInsulinUnitsDispensed = () => {
+
+    const query = {
+        text: "SELECT average_units_dispensed FROM synthea.average_diabetic_medication_statistics",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const insertResults = (year, total) => {
+
+    const insertQuery = {
+        text: 'INSERT INTO acs.results(year, total) VALUES($1, $2)',
+        values: [year, total],
+    };
+
+    client.query(insertQuery, (err, res) => {
+        if (err) {
+            console.log(err.stack);
+        }
+    });
+};
+
+const getResults = () => {
+
+    const query = {
+        text: "SELECT * FROM acs.results",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+            return results.rows;
+        });
+};
+
+const truncateTable = () => {
+
+    const truncateQuery = {
+        text: "TRUNCATE TABLE acs.results",
+    };
+
+    client.query(truncateQuery, (err, res) => {
+        if (err) {
+            console.log(err.stack);
+        }
+    });
+};
+
+const getPeanutMedicationDays = (description) => {
+    const query = {
+        text: "SELECT average_time_interval FROM synthea.average_peanut_medication_statistics WHERE code = $1",
+        rowMode: 'array',
+    };
+
+    return client.query(query, [description])
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getPeanutMedicationUnitsDispensed = (description) => {
+
+    const query = {
+        text: "SELECT average_dispensed FROM synthea.average_peanut_medication_statistics WHERE code = $1",
+        rowMode: 'array',
+    };
+
+    return client.query(query, [description])
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getTotalPollenAllergyPatients = () => {
+
+    const query = {
+        text: "SELECT pollen_allergy_patients FROM synthea.pollen_allergy_patients",
+        rowMode: 'array',
+    };
+
+    return client.query(query)
+        .then((results) => {
+
+            let totalPatients = results.rows[0] + results.rows[1];
+
+            return totalPatients;
+        });
+};
+
+const getPollenMedicationDays = (description) => {
+    const query = {
+        text: "SELECT average_time_interval FROM synthea.average_pollen_medication_statistics WHERE code = $1",
+        rowMode: 'array',
+    };
+
+    return client.query(query, [description])
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
+const getPollenMedicationUnitsDispensed = (description) => {
+
+    const query = {
+        text: "SELECT average_dispensed FROM synthea.average_pollen_medication_statistics WHERE code = $1",
+        rowMode: 'array',
+    };
+
+    return client.query(query, [description])
+        .then((results) => {
+            return results.rows[0];
+        });
+};
+
 module.exports = {
     getSupplies,
     getPatientsByAge,
-    getCarePlans,
     getAllergies,
     getMedicationsByAge,
+    getPopulationChange2020_2021,
+    getTotalPeanutAllergyPatients,
+    getTotalDiabeticPatients,
+    getInsulinDays,
+    getInsulinUnitsDispensed,
+    getResults,
+    insertResults,
+    truncateTable,
+    getPeanutMedicationDays,
+    getPeanutMedicationUnitsDispensed,
+    getPollenMedicationDays,
+    getPollenMedicationUnitsDispensed,
+    getTotalPollenAllergyPatients
 };
