@@ -1,11 +1,11 @@
-import './insights-page.css'
-import {Link} from 'react-router-dom';
+import "./insights-page.css"
+import {Link} from "react-router-dom";
 import React from "react"
 
 const MedicalAdminPageInsightsPeanutAllergy = () => {
      const [data, setData] = React.useState(null);
       React.useEffect(() => {
-         fetch("/peanutPatientsPrediction")
+         fetch("/supply")
              .then((res) => res.json())
             .then((data) => setData(data.message));
       }, []);

@@ -1,5 +1,5 @@
-import '../insights-page.css'
-import {Link} from 'react-router-dom';
+import "../insights-page.css"
+import {Link} from "react-router-dom";
 import React from "react"
 
 const MedicalAdminPageInsightsPollenCetirizineHydrochloride5 = () => {

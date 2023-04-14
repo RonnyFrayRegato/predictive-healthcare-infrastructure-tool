@@ -1,9 +1,9 @@
 import React from "react"
-import './App.css';
-import HomePage from './pages/home-page/home-page.js';
-import MedicalAdminPageSupply from './pages/medical-admin-page/medical-admin-page-supply.js';
-import MedicalAdminPagePatients from './pages/medical-admin-page/medical-admin-page-patients.js';
-import MedicalAdminPageAllergies from './pages/medical-admin-page/medical-admin-page-allergies';
+import "./App.css";
+import HomePage from "./pages/home-page/home-page.js";
+import MedicalAdminPageSupply from "./pages/medical-admin-page/medical-admin-page-supply.js";
+import MedicalAdminPagePatients from "./pages/medical-admin-page/medical-admin-page-patients.js";
+import MedicalAdminPageAllergies from "./pages/medical-admin-page/medical-admin-page-allergies";
 import MedicalAdminPageMedications from "./pages/medical-admin-page/medical-admin-page-medications";
 import MedicalAdminPageInsights from "./pages/medical-admin-page/medical-admin-page-insights";
 import MedicalAdminPageInsightsDiabetes from "./pages/medical-admin-page/medical-admin-page-insights-diabetes";
@@ -58,8 +58,8 @@ import MedicalAdminPageInsightsPollenEpinephrine1
 import MedicalAdminPageInsightsPollenTerfenadine60
     from "./pages/medical-admin-page/pollen-allergy-medications/medical-admin-page-insights-pollen-terfenadine60";
 import MedicalAdminPageInsightsPollen from "./pages/medical-admin-page/medical-admin-page-insights-pollen";
-import SystemAdminHomePage from './pages/system-admin-page/system-admin-home-page';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import SystemAdminHomePage from "./pages/system-admin-page/system-admin-home-page";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 function App() {
     return (<BrowserRouter>

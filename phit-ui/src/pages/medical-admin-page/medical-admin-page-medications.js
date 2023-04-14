@@ -1,5 +1,5 @@
-import './static-data-page.css'
-import {Link} from 'react-router-dom';
+import "./static-data-page.css"
+import {Link} from "react-router-dom";
 import React from "react"
 
 const MedicalAdminPageMedications = () => {
