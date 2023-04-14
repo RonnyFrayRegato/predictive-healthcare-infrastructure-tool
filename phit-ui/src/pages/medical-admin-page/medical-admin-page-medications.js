@@ -1,7 +1,5 @@
-import './static-data-page.css'
-import {useState} from 'react';
-import {useRef} from 'react';
-import {Link} from 'react-router-dom';
+import "./static-data-page.css"
+import {Link} from "react-router-dom";
 import React from "react"
 
 const MedicalAdminPageMedications = () => {
@@ -26,6 +24,8 @@ const MedicalAdminPageMedications = () => {
                 <div className="medical-admin-highlighted-text">&emsp;Medications</div>
                 <hr></hr>
                 <Link to="/medicalAdminPage/allergies">&emsp;Allergies</Link>
+                <hr></hr>
+                <Link to="/medicalAdminPage/insights">&emsp;Insights</Link>
                 <hr></hr>
                 <br/>
             </div>
@@ -52,12 +52,11 @@ const MedicalAdminPageMedications = () => {
                     } else {
                         return (<table>
                             <tr>
-                                <th>Date</th>
-                                <th>Patient Name</th>
-                                <th>Birth Date</th>
-                                <th>Age</th>
+                                <th>ID</th>
+                                <th>Years Old</th>
+                                <th>Code</th>
                                 <th>Description</th>
-                                <th>Quantity</th>
+                                <th>Dispenses</th>
                             </tr>
                             {data.map((arr, index) => (<tr key={index}>
                                 {arr.map(num => (<td key={num}>{num}</td>))}

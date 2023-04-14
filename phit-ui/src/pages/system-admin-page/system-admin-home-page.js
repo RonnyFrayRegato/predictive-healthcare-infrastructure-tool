@@ -1,7 +1,5 @@
-import './system-admin-home-page.css'
-import {useState} from 'react';
-import {useRef} from 'react';
-import {Link} from 'react-router-dom';
+import "./system-admin-home-page.css"
+import {Link} from "react-router-dom";
 
 const SystemAdminHomePage = () => {
     return (<div className="system-admin-home">
@@ -48,7 +46,6 @@ const SystemAdminHomePage = () => {
                 </div>
             </div>
         </div>
-
     </div>);
 }
 export default SystemAdminHomePage;
