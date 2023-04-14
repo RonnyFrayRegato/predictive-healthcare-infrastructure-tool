@@ -41,7 +41,6 @@ async function calculatePeanutAllergy() {
     });
 }
 
-
 async function calculateDiabetic() {
     return new Promise(async (resolve, reject) => {
         try {
@@ -108,7 +107,6 @@ async function calculateInsulin() {
         }
     });
 }
-
 
 async function calculatePeanutMedication(description) {
     return new Promise(async (resolve, reject) => {

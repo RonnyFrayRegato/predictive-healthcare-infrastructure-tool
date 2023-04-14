@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS acs.population_change
 CREATE TABLE IF NOT EXISTS acs.results
 (
     year		    TEXT,
-    total	NUMERIC
+    total	        NUMERIC
 );

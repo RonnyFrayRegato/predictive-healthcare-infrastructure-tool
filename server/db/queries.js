@@ -26,7 +26,6 @@ const getPatientsByAge = (minAge, maxAge) => {
         });
 };
 
-
 const getAllergies = () => {
     const query = {
         text: 'SELECT patient_id, code, system, description, type, category FROM synthea.allergies',
@@ -77,7 +76,6 @@ const getTotalPeanutAllergyPatients = () => {
         });
 };
 
-
 const getTotalDiabeticPatients = () => {
 
     const query = {
@@ -90,7 +88,6 @@ const getTotalDiabeticPatients = () => {
             return results.rows[0];
         });
 };
-
 
 const getInsulinDays = () => {
 
