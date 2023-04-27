@@ -52,12 +52,12 @@ const MedicalAdminPageAllergies = () => {
                     } else {
                         return (<table>
                             <tr>
-                                <th>Date</th>
-                                <th>Patient Name</th>
-                                <th>Birth Date</th>
-                                <th>Age</th>
+                                <th>Patient ID</th>
+                                <th>Allergy Code</th>
+                                <th>System</th>
                                 <th>Description</th>
-                                <th>Quantity</th>
+                                <th>Type</th>
+                                <th>Category</th>
                             </tr>
                             {data.map((arr, index) => (<tr key={index}>
                                 {arr.map(num => (<td key={num}>{num}</td>))}

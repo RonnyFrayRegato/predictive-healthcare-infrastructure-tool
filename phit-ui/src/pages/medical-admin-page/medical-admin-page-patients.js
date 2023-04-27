@@ -52,10 +52,10 @@ const MedicalAdminPagePatients = () => {
                     } else {
                         return (<table>
                             <tr>
-                                <th>Date</th>
-                                <th>Patient Name</th>
-                                <th>Birth Date</th>
-                                <th>Age</th>
+                                <th>Patient ID</th>
+                                <th>Years as Patient</th>
+                                <th>Patient Code</th>
+                                <th>Description</th>
                             </tr>
                             {data.map((arr, index) => (<tr key={index}>
                                 {arr.map(num => (<td key={num}>{num}</td>))}
