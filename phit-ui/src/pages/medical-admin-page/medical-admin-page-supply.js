@@ -53,9 +53,9 @@ const MedicalAdminPageSupply = () => {
                         return (<table>
                             <tr>
                                 <th>Date</th>
-                                <th>Patient Name</th>
-                                <th>Birth Date</th>
-                                <th>Age</th>
+                                <th>Patient ID</th>
+                                <th>Encounter ID</th>
+                                <th>Supply Code</th>
                                 <th>Description</th>
                                 <th>Quantity</th>
                             </tr>

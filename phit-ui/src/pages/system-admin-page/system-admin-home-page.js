@@ -28,17 +28,23 @@ const SystemAdminHomePage = () => {
                 <div className="row">
                     <div className="column">
                         <div className="detail-text">
-                            <img src="https://freesvg.org/img/abstract-user-flat-4.png"></img>
+                            <img src="https://freesvg.org/img/abstract-user-flat-4.png"
+                                 alt="Medical Admin profile photo template"
+                            />
                             <br/>
                             <Link to="/medicalAdminPage/supply">&emsp;&emsp;&emsp;Medical Admin</Link>
                         </div>
                         <div className="detail-text">
-                            <img src="https://freesvg.org/img/abstract-user-flat-4.png"></img>
+                            <img src="https://freesvg.org/img/abstract-user-flat-4.png"
+                                 alt="Clinician profile photo template"
+                            />
                             <br/>
                             <span>&emsp;&emsp;&emsp;Clinician</span>
                         </div>
                         <div className="detail-text">
-                            <img src="https://freesvg.org/img/abstract-user-flat-4.png"></img>
+                            <img src="https://freesvg.org/img/abstract-user-flat-4.png"
+                                 alt="Capital Planner profile photo template"
+                            />
                             <br/>
                             <span>&emsp;&emsp;&emsp;Capital Planner</span>
                         </div>
